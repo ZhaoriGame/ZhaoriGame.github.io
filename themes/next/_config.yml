@@ -95,7 +95,7 @@ creative_commons:
   license: by-nc-sa
   sidebar: false
   post: false
-  language:
+  language: zh-Hans
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
@@ -161,7 +161,7 @@ menu:
   #about: /about/ || user
   ##tags: /tags/ || tags
   分类: /categories/ || th
-  archives: /archives/ || archive
+  全部: /archives/ || archive
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
