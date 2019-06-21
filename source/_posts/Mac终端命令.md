@@ -31,3 +31,17 @@ sudo kill -9 PID
 
 
 
+### 苹果打包隐藏Home键
+
+```
+(UIRectEdge)preferredScreenEdgesDeferringSystemGestures
+{
+  return UIRectEdgeAll;
+}
+
+```
+
+
+
+
+
