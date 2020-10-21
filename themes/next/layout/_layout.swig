@@ -54,6 +54,7 @@
           {% block sidebar %}{% endblock %}
         {% endif %}
       </div>
+      {% include 'password.swig' %}
     </main>
 
     <footer id="footer" class="footer">
