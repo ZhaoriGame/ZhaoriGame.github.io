@@ -96,16 +96,20 @@
 
 
 
-  <meta name="description" content="笔记记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="朝日">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="面剔除（Culling）​    一个3DCube我们最多只能看到3个面，那多余的几个面就能丢弃它，能节省片段着色器的执行数，这就是面剔除（Culling），我们可以分析顶点数据的环绕顺序(Winding Order)来区分正面和背面，而反面在绝大多数情况下是不用渲染的。 在Unity中Cull有三种用于控制几何体的哪一面会被剔除Cull Back || Front || Off  Cull Ba">
+<meta name="keywords" content="图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Culling">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/Culling/index.html">
 <meta property="og:site_name" content="朝日">
-<meta property="og:description" content="笔记记录">
+<meta property="og:description" content="面剔除（Culling）​    一个3DCube我们最多只能看到3个面，那多余的几个面就能丢弃它，能节省片段着色器的执行数，这就是面剔除（Culling），我们可以分析顶点数据的环绕顺序(Winding Order)来区分正面和背面，而反面在绝大多数情况下是不用渲染的。 在Unity中Cull有三种用于控制几何体的哪一面会被剔除Cull Back || Front || Off  Cull Ba">
 <meta property="og:locale" content="CH">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d2f478fdbecc46253.png">
+<meta property="og:updated_time" content="2020-10-21T15:41:05.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="朝日">
-<meta name="twitter:description" content="笔记记录">
+<meta name="twitter:title" content="Culling">
+<meta name="twitter:description" content="面剔除（Culling）​    一个3DCube我们最多只能看到3个面，那多余的几个面就能丢弃它，能节省片段着色器的执行数，这就是面剔除（Culling），我们可以分析顶点数据的环绕顺序(Winding Order)来区分正面和背面，而反面在绝大多数情况下是不用渲染的。 在Unity中Cull有三种用于控制几何体的哪一面会被剔除Cull Back || Front || Off  Cull Ba">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/18/5d2f478fdbecc46253.png">
 
 
 
@@ -113,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/archives/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/10/Culling/">
 
 
 
@@ -123,7 +127,7 @@
   };
 </script>
 
-  <title>Archiv | 朝日</title>
+  <title>Culling | 朝日</title>
   
 
 
@@ -171,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,7 +251,7 @@
         
         
           
-          <li class="menu-item menu-item-全部 menu-item-active">
+          <li class="menu-item menu-item-全部">
 
     
     
@@ -289,417 +293,221 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/10/Culling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Culling
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-08-10 17:12:41" itemprop="dateCreated datePublished" datetime="2019-08-10T17:12:41+08:00">2019-08-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-10-21 23:41:05" itemprop="dateModified" datetime="2020-10-21T23:41:05+08:00">2020-10-21</time>
+              
+            
+          </span>
+
           
-        
-        Öhm..! Insgesamt 24 Artikel. Bleib dran.
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图形学/" itemprop="url" rel="index"><span itemprop="name">图形学</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/15/Free-HDRSkybox/" itemprop="url">
+          
             
-              <span itemprop="name">Free_HDRSkybox</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-15T21:28:39+08:00" content="2019-08-15">
-          08-15
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/依赖倒置原则/" itemprop="url">
-            
-              <span itemprop="name">依赖倒置原则</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-13T19:50:12+08:00" content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/Design-Pattern-桥接模式/" itemprop="url">
-            
-              <span itemprop="name">Design_Pattern_桥接模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-13T19:49:45+08:00" content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="面剔除（Culling）"><a href="#面剔除（Culling）" class="headerlink" title="面剔除（Culling）"></a>面剔除（Culling）</h4><p>​    一个3DCube我们最多只能看到3个面，那多余的几个面就能丢弃它，能节省片段着色器的执行数，这就是面剔除（Culling），我们可以分析顶点数据的环绕顺序(Winding Order)来区分正面和背面，而反面在绝大多数情况下是不用渲染的。</p>
+<h5 id="在Unity中Cull有三种用于控制几何体的哪一面会被剔除"><a href="#在Unity中Cull有三种用于控制几何体的哪一面会被剔除" class="headerlink" title="在Unity中Cull有三种用于控制几何体的哪一面会被剔除"></a>在Unity中Cull有三种用于控制几何体的哪一面会被剔除</h5><p><strong>Cull Back || Front || Off</strong></p>
+<ul>
+<li>Cull Back——不渲染多边形的背面（默认）。</li>
+<li>Cull Front——不渲染多边形的正面。这将看到原来被正面遮挡的背面内容。</li>
+<li>Cull Off——禁用剔除，两个面都会被绘制。同于一些特殊的效果。（一般用于绘制比较薄的对象，如：纸）</li>
+</ul>
+<h5 id="默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。"><a href="#默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。" class="headerlink" title="默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。"></a>默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。</h5><p>观察者所面向的所有三角形顶点就是我们所指定的正确环绕顺序了，而立方体另一面的三角形顶点则是以相反的环绕顺序所渲染的。这样的结果就是，我们所面向的三角形将会是正向三角形，而背面的三角形则是背向三角形。如下图：</p>
+<p><img src="https://i.loli.net/2019/07/18/5d2f478fdbecc46253.png" alt></p>
+<p>​    在顶点数据中，我们将两个三角形都以逆时针顺序定义（正面的三角形是1、2、3，背面的三角形也是1、2、3（如果我们从正面看这个三角形的话））。然而，如果从观察者当前视角使用1、2、3的顺序来绘制的话，从观察者的方向来看，背面的三角形将会是以顺时针顺序渲染的。虽然背面的三角形是以逆时针定义的，它现在是以顺时针顺序渲染的了。这正是我们想要剔除（Cull，丢弃）的不可见面了</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/Design-Pattern-享元模式/" itemprop="url">
-            
-              <span itemprop="name">Design_Pattern_享元模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-13T19:49:34+08:00" content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/Design-Pattern-命令模式/" itemprop="url">
-            
-              <span itemprop="name">Design_Pattern_命令模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-13T19:49:20+08:00" content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/Design-Pattern-状态模式/" itemprop="url">
-            
-              <span itemprop="name">Design_Pattern_状态模式</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-13T19:49:11+08:00" content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/Design-Pattern-单例/" itemprop="url">
-            
-              <span itemprop="name">Design_Pattern_单例</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-13T19:48:30+08:00" content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/10/Stencil-Test/" itemprop="url">
-            
-              <span itemprop="name">Stencil_Test</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-10T17:13:45+08:00" content="2019-08-10">
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/10/Culling/" itemprop="url">
-            
-              <span itemprop="name">Culling</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-10T17:12:41+08:00" content="2019-08-10">
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/10/Blending/" itemprop="url">
-            
-              <span itemprop="name">Blending</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-10T17:12:19+08:00" content="2019-08-10">
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/10/Blending/" rel="next" title="Blending">
+                <i class="fa fa-chevron-left"></i> Blending
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/10/Stencil-Test/" rel="prev" title="Stencil_Test">
+                Stencil_Test <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -719,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -856,6 +673,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#面剔除（Culling）"><span class="nav-number">1.</span> <span class="nav-text">面剔除（Culling）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在Unity中Cull有三种用于控制几何体的哪一面会被剔除"><span class="nav-number">1.1.</span> <span class="nav-text">在Unity中Cull有三种用于控制几何体的哪一面会被剔除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。"><span class="nav-number">1.2.</span> <span class="nav-text">默认情况下，逆时针顶点所定义的三角形将会被处理为正向三角形。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1058,6 +892,10 @@ password();
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1073,6 +911,8 @@ password();
 
   
 
+
+  
 
 
   
