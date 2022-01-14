@@ -1,11 +1,11 @@
 ---
-title: 新的开始
-date: 2022-01-14 1:03
-categories: 通用
-tags: 通用
+title: Hexo使用手册
+date: 2022-01-14 21:54:17
+categories:通用
+tags:通用
 ---
 
-# 新的开始
+# HEXO使用手册
 
 测试和搭建环境
 
@@ -15,7 +15,7 @@ tags: 通用
 - `hexo new newpage` 新建一个文章
 - `hexo generate` 顾名思义，生成静态文章，可以用 `hexo g`缩写
 - `hexo deploy` 部署文章，可以用`hexo d`缩写
--  `hexo new draft newpage` 新建一个 `newpage.md` 文件
+- `hexo new draft newpage` 新建一个 `newpage.md` 文件
 - `hexo publish draft newpage `发布post
 
 
