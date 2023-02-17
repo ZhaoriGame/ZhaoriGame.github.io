@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="CH">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Cg 标准函数库– 来自《 GPU编程与CG语言GPU-Programming-AndCgLanguage-Primer》  数学函数（Mathematical Functions）;  几何函数(Geometric Functions)；  纹理映射函数(Texture Map Functions)；  偏导数函数(Derivative Functions)；  调试函数(Debugging F">
+<meta name="keywords" content="图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CG标准函数库">
+<meta property="og:url" content="http://yoursite.com/2019/05/31/CG标准函数库/index.html">
+<meta property="og:site_name" content="朝日">
+<meta property="og:description" content="Cg 标准函数库– 来自《 GPU编程与CG语言GPU-Programming-AndCgLanguage-Primer》  数学函数（Mathematical Functions）;  几何函数(Geometric Functions)；  纹理映射函数(Texture Map Functions)；  偏导数函数(Derivative Functions)；  调试函数(Debugging F">
+<meta property="og:locale" content="CH">
+<meta property="og:updated_time" content="2023-02-17T15:32:30.100Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CG标准函数库">
+<meta name="twitter:description" content="Cg 标准函数库– 来自《 GPU编程与CG语言GPU-Programming-AndCgLanguage-Primer》  数学函数（Mathematical Functions）;  几何函数(Geometric Functions)；  纹理映射函数(Texture Map Functions)；  偏导数函数(Derivative Functions)；  调试函数(Debugging F">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/05/31/CG标准函数库/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CG标准函数库 | 朝日</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="CH">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">朝日</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">ZhaoriGame</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Navigationsleiste an/ausschalten">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>主页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-全部">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>全部</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/31/CG标准函数库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CG标准函数库
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-05-31 10:01:33" itemprop="dateCreated datePublished" datetime="2019-05-31T10:01:33+08:00">2019-05-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/图形学/" itemprop="url" rel="index"><span itemprop="name">图形学</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Cg-标准函数库"><a href="#Cg-标准函数库" class="headerlink" title="Cg 标准函数库"></a>Cg 标准函数库</h3><p>– 来自《 GPU编程与CG语言GPU-Programming-AndCgLanguage-Primer》</p>
+<ol>
+<li><p>数学函数（Mathematical Functions）;</p>
+</li>
+<li><p>几何函数(Geometric Functions)；</p>
+</li>
+<li><p>纹理映射函数(Texture Map Functions)；</p>
+</li>
+<li><p>偏导数函数(Derivative Functions)；</p>
+</li>
+<li><p>调试函数(Debugging Function)；</p>
+</li>
+</ol>
+<h3 id="数学函数（Mathematical-Functions）"><a href="#数学函数（Mathematical-Functions）" class="headerlink" title="数学函数（Mathematical Functions）"></a>数学函数（Mathematical Functions）</h3><p>列举了 Cg 标准函数库中所有的数学函数，这些数学函数用于执行数学上常用计算，包括：三角函数、幂函数、园函数、向量和矩阵的操作函数。这些函数都被重载，以支持标量数据和不同长度的向量作为输入参数。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abs(x)</td>
+<td>返回输入参数的绝对值</td>
+</tr>
+<tr>
+<td>acos(x)</td>
+<td>反余切函数，输入参数范围为[-1,1]， 返回[0,<em>p</em> ]区间的角度值</td>
+</tr>
+<tr>
+<td>all(x)</td>
+<td>如果输入参数均不为 0，则返回 ture；否则返回 flase。&amp;&amp;运算</td>
+</tr>
+<tr>
+<td>any(x)</td>
+<td>输入参数只要有其中一个不为 0，则返回true。\</td>
+<td>\</td>
+<td>运算</td>
+</tr>
+<tr>
+<td>asin(x)</td>
+<td>反正弦函数,输入参数取值区间为[-1,1] ，返回角度值范围为⎡⎢- <em>p</em> , <em>p</em> ⎤⎥⎣    2   2 ⎦</td>
+</tr>
+<tr>
+<td>atan(x)</td>
+<td>反正切函数，返回角度值范围为⎡- <em>p</em> , <em>p</em> ⎤⎢⎣    2  2 ⎥⎦</td>
+</tr>
+<tr>
+<td>atan2(y,x)</td>
+<td>计算 y/x 的反正切值。实际上和 atan(x)函数功能完全一样，至少输入参数不同。atan(x) =atan2(x, float(1))。</td>
+</tr>
+<tr>
+<td>ceil(x)</td>
+<td>对输入参数向上取整。例如：ceil(float(1.3)) ，其返回值为 2.0</td>
+</tr>
+<tr>
+<td>clamp(x,a,b)</td>
+<td>如果 x 值小于 a，则返回 a；如果 x 值大于 b，返回 b；否则，返回 x。</td>
+</tr>
+<tr>
+<td>cos(x)</td>
+<td>返回弧度 x 的余弦值。返回值范围为[-1,1]</td>
+</tr>
+<tr>
+<td>cosh(x)</td>
+<td>双曲余弦（hyperbolic cosine）函数，计算 x的双曲余弦值。</td>
+</tr>
+<tr>
+<td>cross(A,B)</td>
+<td>返回两个三元向量的叉积(cross product)。注意，输入参数必须是三元向量！</td>
+</tr>
+<tr>
+<td>degrees(x)</td>
+<td>输入参数为弧度值(radians)，函数将其转换为角度值(degrees)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">determinant(m)</th>
+<th style="text-align:left">计算矩阵的行列式因子。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">dot(A,B)</td>
+<td style="text-align:left">返回A 和 B 的点积(dot product)。参数 A 和 B可以是标量，也可以是向量（输入参数方面， 点积和叉积函数有很大不同）。</td>
+</tr>
+<tr>
+<td style="text-align:left">exp(x)</td>
+<td style="text-align:left">计算<em>e**x</em> 的值，e= 2.71828182845904523536</td>
+</tr>
+<tr>
+<td style="text-align:left">exp2(x)</td>
+<td style="text-align:left">计算2<em>x</em> 的值</td>
+</tr>
+<tr>
+<td style="text-align:left">floor(x)</td>
+<td style="text-align:left">对输入参数向下取整。例如 floor(float(1.3))返回的值为 1.0；但是 floor(float(-1.3))返回的值为-2.0。该函数与 ceil(x)函数相对应。</td>
+</tr>
+<tr>
+<td style="text-align:left">fmod(x,y)</td>
+<td style="text-align:left">返回 x/y 的余数。如果 y 为 0，结果不可预料。</td>
+</tr>
+<tr>
+<td style="text-align:left">frac(x)</td>
+<td style="text-align:left">Returns the fractional portion of a scalar oreach vector component</td>
+</tr>
+<tr>
+<td style="text-align:left">frexp(x, out exp)</td>
+<td style="text-align:left">将浮点数 x 分解为尾数和指数，即x = m* 2^exp，返回 m，并将指数存入 exp 中； 如果 x 为 0，则尾数和指数都返回 0</td>
+</tr>
+<tr>
+<td style="text-align:left">isfinite(x)</td>
+<td style="text-align:left">判断标量或者向量中的每个数据是否是有限数，如果是返回 true；否则返回 false;无限的或者非数据(not-a-number NaN)，</td>
+</tr>
+<tr>
+<td style="text-align:left">isinf(x)</td>
+<td style="text-align:left">判断标量或者向量中的每个数据是否是无限，如果是返回 true；否则返回 false;</td>
+</tr>
+<tr>
+<td style="text-align:left">isnan(x)</td>
+<td style="text-align:left">判断标量或者向量中的每个数据是否是非数据(not-a-number NaN)，如果是返回 true；否则返回 false;</td>
+</tr>
+<tr>
+<td style="text-align:left">ldexp(x, n)</td>
+<td style="text-align:left">计算 <em>x</em> <em> 2</em>n* 的值</td>
+</tr>
+<tr>
+<td style="text-align:left">lerp(a, b, f)</td>
+<td style="text-align:left">计算(1- <em>f</em> )<em> </em>a<em> + </em>b<em> </em> <em>f</em> 或者<em>a</em> + <em>f</em> <em>(</em>b<em> - </em>a*) 的值。即在下限 a 和上限 b 之间进行插值，f 表示权值。注意，如果 a 和 b 是向量，则权值 f 必须是标量或者等长的向量。</td>
+</tr>
+<tr>
+<td style="text-align:left">lit(NdotL, NdotH, m)</td>
+<td style="text-align:left">N 表示法向量；L 表示入射光向量；H 表示半角向量；m 表示高光系数。函数计算环境光、散射光、镜面光的贡献， 返回的 4 元向量：X 位表示环境光的贡献，总是 1.0；Y 位代表散射光的贡献，如果 <em>N</em> · <em>L</em> &lt; 0 ，则为 0；否则为 <em>N</em> · <em>L</em>Z 位代表镜面光的贡献，如果 <em>N</em> · <em>L</em> &lt; 0 或者<em>N</em> · <em>H</em> &lt; 0 ，则位 0；否则为(<em>N</em> · <em>H</em> )<em>m</em> ；W 位始终位 1.0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>log(x)</th>
+<th>计算ln ( <em>x</em>) 的值，x 必须大于 0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log2(x)</td>
+<td>计算log(<em>x</em>) 的值，x 必须大于 02</td>
+</tr>
+<tr>
+<td>log10(x)</td>
+<td>计算log(<em>x</em>) 的值，x 必须大于 010</td>
+</tr>
+<tr>
+<td>max(a, b)</td>
+<td>比较两个标量或等长向量元素，返回最大值。</td>
+</tr>
+<tr>
+<td>min(a,b)</td>
+<td>比较两个标量或等长向量元素，返回最小值。</td>
+</tr>
+<tr>
+<td>modf(x, out ip)</td>
+<td>在 Cg Reference Manual 中没有查到</td>
+</tr>
+<tr>
+<td>mul(M, N)</td>
+<td>计算两个矩阵相乘，如果 M 为 AxB 阶矩阵，N 为 BxC 阶矩阵，则返回 AxC 阶矩阵。下面两个函数为其重载函数。</td>
+</tr>
+<tr>
+<td>mul(M, v)</td>
+<td>计算矩阵和向量相乘</td>
+</tr>
+<tr>
+<td>mul(v, M)</td>
+<td>计算向量和矩阵相乘</td>
+</tr>
+<tr>
+<td>noise( x)</td>
+<td>噪声函数，返回值始终在 0，1 之间；对于同样的输入，始终返回相同的值（也就是说， 并不是真正意义上的随机噪声）。</td>
+</tr>
+<tr>
+<td>pow(x, y)</td>
+<td><em>x</em> <em>y</em></td>
+</tr>
+<tr>
+<td>radians(x)</td>
+<td>函数将角度值转换为弧度值</td>
+</tr>
+<tr>
+<td>round(x)</td>
+<td>Round-to-nearest，或 closest integer to x 即四舍五入。</td>
+</tr>
+<tr>
+<td>rsqrt(x)</td>
+<td>X 的反平方根，x 必须大于 0</td>
+</tr>
+<tr>
+<td>saturate(x)</td>
+<td>如果 x 小于 0，返回 0；如果 x 大于 1，返回1；否则，返回 x</td>
+</tr>
+<tr>
+<td>sign(x)</td>
+<td>如果 x 大于 0，返回 1；如果 x 小于 0，返回01；否则返回 0。</td>
+</tr>
+<tr>
+<td>sin(x)</td>
+<td>输入参数为弧度，计算正弦值，返回值范围为[-1,1]</td>
+</tr>
+<tr>
+<td>sincos(float x, out s, out c)</td>
+<td>该函数是同时计算 x 的 sin 值和 cos 值，其中s=sin(x)，c=cos(x)。该函数用于“同时需要计算 sin 值和 cos 值的情况”，比分别运算要快很多!</td>
+</tr>
+<tr>
+<td>sinh(x)</td>
+<td>计算双曲正弦（hyperbolic sine）值。</td>
+</tr>
+<tr>
+<td>smoothstep(min, max, x)</td>
+<td>值 x 位于 min、max 区间中。如果 x=min，返回 0；如果 x=max，返回 1；如果 x 在两者之间，按照下列公式返回数据：-2<em>( </em>x<em> - min )3 + 3</em>( <em>x</em> - min )2max- min    max- min</td>
+</tr>
+<tr>
+<td>step(a, x)</td>
+<td>如果 x&lt;a，返回 0；否则，返回 1。</td>
+</tr>
+<tr>
+<td>sqrt(x)</td>
+<td>求 x 的平方根，    <em>x</em> ，x 必须大于 0。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>tan(x)</th>
+<th>输入参数为弧度，计算正切值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tanh(x)</td>
+<td>计算双曲正切值</td>
+</tr>
+<tr>
+<td>transpose(M)</td>
+<td>M 为矩阵，计算其转置矩阵</td>
+</tr>
+</tbody>
+</table>
+<p>表 4 Cg 标准函数库中的数学函数</p>
+<h3 id="几何函数（Geometric-Functions"><a href="#几何函数（Geometric-Functions" class="headerlink" title="几何函数（Geometric Functions)"></a>几何函数（Geometric Functions)</h3><p>几何函数，如表 5 所示，用于执行和解析几何相关的计算，例如根据入射光向量和顶点法向量，求取反射光和折射光方向向量。Cg 语言标准函数库中有3 个几何函数会经常被使用到，分别是：normalize 函数，对向量进行归一化；reflect函数，计算反射光方向向量；refract 函数，计算折射光方向向量。大声呐喊，并要求强烈注意：</p>
+<ol>
+<li><p>着色程序中的向量最好进行归一化之后再使用，否则会出现难以预料的错误；</p>
+</li>
+<li><p>reflect 函数和 refract 函数都存在以“入射光方向向量”作为输入参数， 注意这两个函数中使用的入射光方向向量，是从外指向几何顶点的；平时我们在着色程序中或者在课本上都是将入射光方向向量作为从顶点出发。</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>distance( pt1, pt2)</td>
+<td>两点之间的欧几里德距离（Euclideandistance）</td>
+</tr>
+<tr>
+<td>faceforward(N,I,Ng)</td>
+<td>如果 <em>Ng</em> · <em>I</em> &lt; 0 ，返回 N；否则返回-N。</td>
+</tr>
+<tr>
+<td>length(v)</td>
+<td>返回一个向量的模，即 sqrt(dot(v,v))</td>
+</tr>
+<tr>
+<td>normalize( v)</td>
+<td>归一化向量</td>
+</tr>
+<tr>
+<td>reflect(I, N)</td>
+<td>根据入射光方向向量 I，和顶点法向量N，计算反射光方向向量。其中 I 和 N 必须被归一化，需要非常注意的是，这个 I 是指向顶点的；函数只对三元向量有效。</td>
+</tr>
+<tr>
+<td>refract(I,N,eta)</td>
+<td>计算折射向量，I 为入射光线，N 为法向量，eta 为折射系数；其中 I 和 N 必须被归一化，如果 I 和 N 之间的夹角太大，则返回（0，0，0），也就是没有折射光线；I 是指向顶点的；函数只对三元向量有效。</td>
+</tr>
+</tbody>
+</table>
+<p>表 5 Cg 标准函数库几何函数</p>
+<h3 id="纹理映射函数（Texture-Map-Functions）"><a href="#纹理映射函数（Texture-Map-Functions）" class="headerlink" title="纹理映射函数（Texture Map Functions）"></a>纹理映射函数（Texture <strong>Map</strong> Functions）</h3><p>下表提供 Cg 标准函数库中的纹理映射函数。这些函数被 ps_2_0、ps_2_x、arbfp1、fp30 和 fp40  等 profiles 完全支持（fully supported）。所有的这些函数返回四元向量值。</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tex1D(sampler1D tex, float s)一维纹理查询</td>
+<td></td>
+</tr>
+<tr>
+<td>tex1D(sampler1D tex, float s, float dsdx, float dsdy)使用导数值（derivatives）查询一维纹理</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex1D(sampler1D tex, float2 sz)一维纹理查询，并进行深度值比较</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex1D(sampler1D tex, float2 sz, float dsdx,float dsdy)使用导数值（derivatives）查询一维纹理， 并进行深度值比较</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex1Dproj(sampler1D tex, float2 sq)一维投影纹理查询</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex1Dproj(sampler1D tex, float3 szq)一维投影纹理查询，并比较深度值</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex2D(sampler2D tex, float2 s)二维纹理查询</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex2D(sampler2D tex, float2 s, float2 dsdx, float2 dsdy)使用导数值（derivatives）查询二维纹理</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex2D(sampler2D tex, float3 sz)二维纹理查询，并进行深度值比较</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex2D(sampler2D tex, float3 sz, float2 dsdx,float2 dsdy)使用导数值（derivatives）查询二维纹理，并进行深度值比较</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex2Dproj(sampler2D tex, float3 sq)二维投影纹理查询</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex2Dproj(sampler2D tex, float4 szq)二维投影纹理查询，并进行深度值比较</td>
+<td></td>
+</tr>
+<tr>
+<td>texRECT(samplerRECT tex, float2 s)</td>
+<td></td>
+</tr>
+<tr>
+<td>texRECT (samplerRECT tex, float2 s, float2 dsdx, float2 dsdy)</td>
+<td></td>
+</tr>
+<tr>
+<td>texRECT (samplerRECT tex, float3 sz)</td>
+<td></td>
+</tr>
+<tr>
+<td>texRECT (samplerRECT tex, float3 sz, float2 dsdx,float2 dsdy)</td>
+<td></td>
+</tr>
+<tr>
+<td>texRECT proj(samplerRECT tex, float3 sq) texRECT proj(samplerRECT tex, float3 szq)</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex3D(sampler3D tex, float s)  三维纹理查询</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex3D(sampler3D tex, float3 s, float3 dsdx, float3 dsdy)  结合导数值（derivatives）查询三维纹理</td>
+<td></td>
+</tr>
+<tr>
+<td>Tex3Dproj(sampler3D tex, float4 szq) 查询三维投影纹理，并进行深度值比较</td>
+<td></td>
+</tr>
+<tr>
+<td>texCUBE(samplerCUBE tex, float3 s)  查询立方体纹理</td>
+<td></td>
+</tr>
+<tr>
+<td>texCUBE (samplerCUBE tex, float3 s, float3 dsdx, float3 dsdy)  结合导数值（derivatives）查询立方体纹理</td>
+<td></td>
+</tr>
+<tr>
+<td>texCUBEproj (samplerCUBE tex, float4 sq) 查询投影立方体纹理</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>​                                             标准函数库纹理映射函数</p>
+<h3 id="偏导函数（Derivative-Functions）"><a href="#偏导函数（Derivative-Functions）" class="headerlink" title="偏导函数（Derivative Functions）"></a>偏导函数（Derivative Functions）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ddx(a)</td>
+<td>参数 a 对应一个像素位置，返回该像素 值在 X 轴上的偏导数</td>
+</tr>
+<tr>
+<td>ddy(a)</td>
+<td>参数 a 对应一个像素位置，返回该像素 值在 X 轴上的偏导数 表 7 Cg 标准函数库偏导函数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="调试函数（Debugging-Function）"><a href="#调试函数（Debugging-Function）" class="headerlink" title="调试函数（Debugging Function）"></a>调试函数（Debugging Function）</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void debug(float4 x)</td>
+<td>如果在编译时设置了 DEBUG，片段着 色程序中调用该函数可以将值 x 作为 COLOR 语义的终输出；否则该函数 什么也不做。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图形学/" rel="tag"># 图形学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/30/Unity里的标签/" rel="next" title="Unity里的标签">
+                <i class="fa fa-chevron-left"></i> Unity里的标签
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/31/Scrollview优化列表组件/" rel="prev" title="Scrollview优化列表组件">
+                Scrollview优化列表组件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhaori</p>
+              <div class="site-description motion-element" itemprop="description">笔记记录</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">schlagwörter</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZhaoriGame" title="GitHub &rarr; https://github.com/ZhaoriGame" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:634901355@qq.com" title="E-Mail &rarr; mailto:634901355@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cg-标准函数库"><span class="nav-number">1.</span> <span class="nav-text">Cg 标准函数库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数（Mathematical-Functions）"><span class="nav-number">2.</span> <span class="nav-text">数学函数（Mathematical Functions）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几何函数（Geometric-Functions"><span class="nav-number">3.</span> <span class="nav-text">几何函数（Geometric Functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纹理映射函数（Texture-Map-Functions）"><span class="nav-number">4.</span> <span class="nav-text">纹理映射函数（Texture Map Functions）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偏导函数（Derivative-Functions）"><span class="nav-number">5.</span> <span class="nav-text">偏导函数（Derivative Functions）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试函数（Debugging-Function）"><span class="nav-number">6.</span> <span class="nav-text">调试函数（Debugging Function）</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+      <script>
+//暂时储存文章中的内容
+var div = $('.post-body');
+//暂时储存目录的内容
+var toc=$('.post-toc-wrap')
+function password() {
+  if(''){
+  //将文章内容删除
+    div.remove();
+ //将目录删除 
+    toc.remove();
+  //将文章删除后，向原来文章的地方添加，应该出现的提示用户输入密码的样式
+  //下面这里的第一个用textarea是因为如果在手机端的时候只能显示一部分文字，
+  //只是拓展:input里面的字只能显示一行，不会自动换行，目前上网搜索没有发现好的办法，所以用了textarea，右下角的小三角通过resize:none 去掉。
+   $('.post-header').after('<textarea class="description" value="Please enter your password and press enter to build" style="border: none;display: block;' +'width: 60%;margin: 0 auto;text-align: center;outline: none;margin-bottom: 50px;resize:none ">
+      Please enter your password and press enter to build</textarea>' +
+      '<div class="qiang" style="height: 100px;width: 60%;margin:0 auto">' +
+      '<input class="password"  type="text" value="" style="border: none;display: block;border-bottom: 1px solid #ccc;' +
+      'margin: 0 auto;outline: none;width:95%"/>' +
+      '</div>')
+      //绑定点击事件，如果是点击的.password 这个div就改变样式，如果是document中除了div之外的其他任何元素，就变回原来的样式。
+    document.onclick = function (event) {
+      var e = event || window.event;
+      var elem = e.srcElement || e.target;
+
+      while (elem) {
+        if (elem != document) {
+          if (elem.className == "password") {
+            $(".password").animate({paddingTop:"30px",width:"100%",borderWidth:"2px"},300)
+            return;
+          }
+          elem = elem.parentNode;
+        } else {
+          $(".password").animate({paddingTop:"0px",width:"95%",borderWidth:"1px"},300)
+          return;
+        }
+      }
+    }
+    //绑定enter键按下后离开的事件
+    $(document).keyup(function(event){
+      if(event.keyCode ==13&&$('.password').length>0){
+        //console.log($('.password').val())
+        //console.log('')
+        if ($('.password').val() == '') {
+        //恢复文章内容
+          (div).appendTo($(".post-header"))
+          //恢复目录
+          toc.appendTo($(".sidebar-inner"))
+          //删除本页面的输入密码组件
+           $(".description").remove();
+          $(".qiang").remove();
+          $(".password").remove();
+          
+          //重新处理pjax事件,如果没有加pjax的从下面这行起到下面的else之间的代码需要去掉。
+          //图片懒加载，没有加入此功能的这个函数需要去掉
+	          $('img').lazyload({
+	             placeholder: '/images/loading.gif',
+	             effect: 'fadeIn',
+	             threshold : 100,
+	             failure_limit : 20,
+	             skip_invisible : false
+	           });
+	           //pjax后出现文章不显示，没有pjax的下面四行需要去掉
+	            $(".post-block").css({opacity:1});
+	            $(".post-header").css({opacity:1});
+	            $(".post-body").css({opacity:1});
+	            $(".pagination").css({opacity:1});
+        }else {
+          alert("Sorry, the password is wrong.")
+        }
+      }
+      //将document的keyup移除，防止在pjax的情况下会重复绑定事件
+    });
+  }
+}
+password();
+</script>
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 – <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhaori</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
