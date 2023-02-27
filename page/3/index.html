@@ -164,6 +164,128 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/1-入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/04/1-入门/" class="post-title-link" itemprop="url">1.入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-06-04 17:59:12" itemprop="dateCreated datePublished" datetime="2019-06-04T17:59:12+08:00">2019-06-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/图形学/" itemprop="url" rel="index"><span itemprop="name">图形学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="渲染流水线"><a href="#渲染流水线" class="headerlink" title="渲染流水线"></a>渲染流水线</h3><h4 id="坐标转换依次顺序"><a href="#坐标转换依次顺序" class="headerlink" title="坐标转换依次顺序"></a>坐标转换依次顺序</h4><p>Object space 模型空间 </p>
+<p>World space 世界坐标系空间</p>
+<p>Eye space 观察坐标系空间</p>
+<p>Clip and Project space 屏幕坐标空间</p>
+<p>注意： </p>
+<ol>
+<li>光照计算通常在World coordinate space（世界坐标空间）里计算，也可以在Eye space 里计算。</li>
+<li>顶点法向量属于Object space ，转化为World space时，要通过（world matrix）转置矩阵的逆矩阵来转换 （复习线性代数去了）</li>
+</ol>
+<h4 id="Eye-Space"><a href="#Eye-Space" class="headerlink" title="Eye Space"></a>Eye Space</h4><p>以Camera为原点 ，由视线方向、视角和远近平面共同组成一个梯形三维空间，称之为viewing frustum（视锥），超出部分会被裁剪 frustum culling（视锥裁剪）</p>
+<p><img src="https://i.loli.net/2019/06/04/5cf686f0789c270813.png" alt=""></p>
+<h3 id="Project-and-clip-space"><a href="#Project-and-clip-space" class="headerlink" title="Project and clip space"></a>Project and clip space</h3><p>因为在不规则的体（viewing frustum）中进行裁剪并非易事，所以应该是先投影再裁剪具体分为三个步骤：</p>
+<ol>
+<li>用透视变换矩阵把顶点从视锥体中变换到裁剪空间的CVV中；</li>
+<li>在CVV进行图元裁剪；</li>
+<li>屏幕映射：将进过前述过程得到的坐标映射到屏幕坐标系上。</li>
+</ol>
+<ul>
+<li>在第一个步骤里的过程为“投影”，主要投影方法有两种：正交投影和透视投影。</li>
+<li>只有图元完全或部分存在于视锥内部时才需要光栅化。超出部分进行裁剪。</li>
+<li>视点去除可以不用在GPU中进行，可以使用高级语言在CPU上实现，提前可减去GPU负担。</li>
+</ul>
+<h4 id="Primitive-Assemble-amp-amp-Triangle-setup"><a href="#Primitive-Assemble-amp-amp-Triangle-setup" class="headerlink" title="Primitive Assemble&amp;&amp;Triangle setup"></a>Primitive Assemble&amp;&amp;Triangle setup</h4><ul>
+<li>Primitive Assembly，图元装配，即将顶点根据Primitive（原始的连接关系），还原出网格结构。</li>
+<li>涉及到三角形的顶点顺序（三角形的法向量朝向）根据右手来决定三角面片的法向量（逆时针排列），法向量朝向视点为正，如果为反面进行背面去除操作（Back-face-Culling）。</li>
+<li>所有的裁剪剔除都是为了减少需要绘制的顶点个数。</li>
+<li>裁剪算法主要包括：视域剔除（View Frustum Culing）、背面剔除（Back-Face Culling）、遮挡剔除（Occlusing Culling）和视口裁剪等。</li>
+</ul>
+<h4 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h4><p>目前我们拿到了每个点的屏幕坐标值（Screen coordinate），也知道我们需要绘制的图元（点、线、面）但是有两个问题：</p>
+<ol>
+<li>点的屏幕坐标都是浮点数，像素都是由整数表示。（绘制的位置为接近两指定端点的实际线段位置如（10.48，20.51）转化为（10，21）四舍五入 或 加0.5取整）。</li>
+<li>在屏幕上需要绘制的有点、线、面，如何根据两个已经确定位置的2个像素点绘制一条线段，如何根据已经确定了位置的3个像素点绘制一个三角形面片。（区域填充推荐慕课课程<a href="https://www.icourse163.org/course/HUST-1003636001" target="_blank" rel="noopener">大力点击进入</a>）</li>
+</ol>
+<h4 id="Pixel-Operation"><a href="#Pixel-Operation" class="headerlink" title="Pixel Operation"></a>Pixel Operation</h4><p>片元操作：计算出每个像素的颜色值，包括</p>
+<ol>
+<li><p>被遮挡面通过一个被称为深度测试的过程而消除。</p>
+</li>
+<li><p>Texture operatioin，纹理操作，根据像素的纹理坐标，查询对应的纹理值。</p>
+</li>
+<li><p>Blending，混合，根据目前已经画好的颜色，与正在计算的颜色的透明度混合为两种颜色，作为新的颜色输出，通常称之为alpha混合技术。屏幕上的每个像素都关联一个RGB颜色值和一个Z缓冲器深度值，alpha值（可以根据需要生成并存储）。</p>
+<p>从渲染管线得到的RGBA，使用over操作符进行混合：</p>
+<p>，<img src="https://i.loli.net/2019/06/05/5cf698001d1b841551.png" alt=""></p>
+<p>a是透明度值（alpha）Ca表示透明物体的颜色，Cs表示混合前像素的颜色，Cd为最终计算得到的颜色。</p>
+<p>为了绘制透明物体，需要对物体进行排序，用z buffer 首先绘制不透明物体，然后从后往前混合透明物体。</p>
+</li>
+<li><p>Filtering，将正在算的颜色经过某种Filtering（滤波）后输出，可以理解为：经过一种数学运算变成新的颜色值。（如最近邻滤波和线性滤波)</p>
+</li>
+</ol>
+<h4 id="最终像素的颜色写入帧缓存，过程如下图"><a href="#最终像素的颜色写入帧缓存，过程如下图" class="headerlink" title="最终像素的颜色写入帧缓存，过程如下图"></a>最终像素的颜色写入帧缓存，过程如下图</h4><p><img src="https://i.loli.net/2019/06/05/5cf69aa2962f261841.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/图形学学习计划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1118,7 +1240,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1131,7 +1253,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
