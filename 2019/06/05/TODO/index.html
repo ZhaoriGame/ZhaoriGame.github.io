@@ -260,6 +260,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -337,10 +338,6 @@
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
-    Chat
-  </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/zhaorigame" title="GitHub → https://github.com/zhaorigame" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
@@ -471,6 +468,26 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '297992e8a9a7c87dd950# GitHub Application Client ID',
+      clientSecret: '8277b4c6b29892f04ad9975bda853312184ee9af# GitHub Application Client Secret',
+      repo        : 'zhaorigame.github.io# Repository name to store issues',
+      owner       : 'zhaorigame# GitHub repo owner',
+      admin       : ['zhaori# GitHub repo owner and collaborators, only these guys can initialize gitHub issues'],
+      id          : 'a7f4cf80d231d39d503f16a63c049ee5',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
