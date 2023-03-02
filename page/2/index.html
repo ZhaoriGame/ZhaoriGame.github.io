@@ -164,6 +164,287 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Design-Pattern-桥接模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/13/Design-Pattern-桥接模式/" class="post-title-link" itemprop="url">Design_Pattern_桥接模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-13 19:49:45" itemprop="dateCreated datePublished" datetime="2019-08-13T19:49:45+08:00">2019-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="设计模式：桥接模式-Bridge-Pattern"><a href="#设计模式：桥接模式-Bridge-Pattern" class="headerlink" title="设计模式：桥接模式(Bridge Pattern)"></a>设计模式：桥接模式(Bridge Pattern)</h1><p>将类的功能层次结构和实现层次结构相分离，使二者能够独立地变化，并在两者之间搭建桥梁，实现桥接。它是一种对象结构型模式，又称为<strong>柄体(Handle and Body)模式</strong>或<strong>接口(Interfce)模式</strong>。</p>
+<p><strong>意图：</strong>在一个软件系统的抽象化和实现化之间使用关联关系（组合或者聚合关系）而<strong>不是继承关系</strong>，从而使两者可以相对独立地变化。</p>
+<ul>
+<li>将类的功能层次分离开，父类拥有子类所共有的功能，子类里实现新的功能。</li>
+<li>将类的实现层次分离开，父类声明抽象方法，子类来实现。</li>
+</ul>
+<p>桥接模式主要包含以下几个角色</p>
+<ul>
+<li><strong>Abstraction</strong>：抽象类，抽象了功能的实现。</li>
+<li><strong>RefinedAbstraction</strong>：扩充抽象类实现了具体的新的功能，构成功能层次结构。</li>
+<li><strong>Implementor</strong>：实现类接口，提供了用于抽象类的接口。</li>
+<li><strong>ConcreteImplementor</strong>：具体实现类，构成实现层次结构。</li>
+</ul>
+<p><strong>现要画一个不同颜色不同形状组合的圆，把抽象化和实现分离开来使其能独立地变化</strong></p>
+<p><strong>抽象类：</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Shape</span></span><br><span class="line">  {</span><br><span class="line">      <span class="keyword">public</span> Color color;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetColor</span>(<span class="params">Color color</span>)</span></span><br><span class="line"><span class="function"></span>      {</span><br><span class="line">          <span class="keyword">this</span>.color = color;</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Draw</span>(<span class="params"></span>)</span>;</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>扩充抽象类</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Circle</span> : <span class="title">Shape</span></span><br><span class="line">  {</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Draw</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>      {</span><br><span class="line">          color.BePaint(<span class="string">"圆"</span>);</span><br><span class="line">      }</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Square</span> : <span class="title">Shape</span></span><br><span class="line">  {</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Draw</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>      {</span><br><span class="line">          color.BePaint(<span class="string">"正方形"</span>);</span><br><span class="line">      }</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>实现类的接口：</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">Color</span></span><br><span class="line">  {</span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">BePaint</span>(<span class="params"><span class="keyword">string</span> shape</span>)</span>;</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>具体实现类:</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Red</span> : <span class="title">Color</span></span><br><span class="line">   {</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BePaint</span>(<span class="params"><span class="keyword">string</span> shape</span>)</span></span><br><span class="line"><span class="function"></span>       {</span><br><span class="line">           Console.WriteLine(<span class="string">"红色的"</span> + shape);</span><br><span class="line">       }</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Black</span> : <span class="title">Color</span></span><br><span class="line">   {</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BePaint</span>(<span class="params"><span class="keyword">string</span> shape</span>)</span></span><br><span class="line"><span class="function"></span>       {</span><br><span class="line">           Console.WriteLine(<span class="string">"黑色的"</span> + shape);</span><br><span class="line">       }</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>画出不同颜色不同形状的圆：</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Draw</span></span><br><span class="line">   {</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoDraw</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       {</span><br><span class="line">           Color red = <span class="keyword">new</span> Red();</span><br><span class="line">           Color black = <span class="keyword">new</span> Black();</span><br><span class="line">           Shape circle = <span class="keyword">new</span> Circle();</span><br><span class="line"></span><br><span class="line">           <span class="comment">//画红色的圆</span></span><br><span class="line">           circle.SetColor(red);</span><br><span class="line">           circle.Draw();</span><br><span class="line"></span><br><span class="line">           <span class="comment">//画黑色的圆</span></span><br><span class="line">           circle.SetColor(black);</span><br><span class="line">           circle.Draw();</span><br><span class="line"></span><br><span class="line">       }</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Design-Pattern-享元模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/13/Design-Pattern-享元模式/" class="post-title-link" itemprop="url">Design_Pattern_享元模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-13 19:49:34" itemprop="dateCreated datePublished" datetime="2019-08-13T19:49:34+08:00">2019-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="设计模式：享元模式"><a href="#设计模式：享元模式" class="headerlink" title="设计模式：享元模式"></a>设计模式：享元模式</h1><h1 id="一、什么是享元模式？"><a href="#一、什么是享元模式？" class="headerlink" title="一、什么是享元模式？"></a>一、什么是享元模式？</h1><p><strong>享元模式（Flyweight）</strong>，运用共享技术有效地支持大量细粒度的对象。UML结构图如下：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/225637/1547115239417-4616bc5b-775f-4362-b2b2-0a165997e94b.png#align=left&amp;display=inline&amp;height=316&amp;name=%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8FUML%E5%9B%BE.png&amp;originHeight=316&amp;originWidth=634&amp;size=21131&amp;width=634" alt="享元模式UML图.png"></p>
+<p>Flyweight是抽象享元角色。它是产品的抽象类，同时定义出对象的外部状态和内部状态的接口或实现；ConcreteFlyweight是具体享元角色，是具体的产品类，实现抽象角色定义的业务；<br>UnsharedConcreteFlyweight是不可共享的享元角色，一般不会出现在享元工厂中；<br>FlyweightFactory是享元工厂，它用于构造一个池容器，同时提供从池中获得对象的方法。</p>
+<h1 id="二、内部状态与外部状态的区分"><a href="#二、内部状态与外部状态的区分" class="headerlink" title="二、内部状态与外部状态的区分"></a>二、内部状态与外部状态的区分</h1><p>享元享元，共享细粒度的单元。那么什么是细粒度的单元呢？如果用乐高积木作比喻，那么一个积木人可以称为一个完整的对象。如果我们把积木人拆开，可以进一步得到头、身躯，腿三个部分。而这些部分，相比于完整的积木人而言，它们三个就是细粒度的单元。</p>
+<p>那么为什么要把一个完整的对象区分内外部呢？这岂不是增加了代码的复杂度？好，我们暂时搁置，接下来思考这样一个问题，如果我们要创造 10 个积木人，用程序怎么表示呢？</p>
+<p>我们先创建一个积木人的类，如下：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LegoMan</span></span><br><span class="line">{</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Head;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Torso;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Leg;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LegoMan</span>(<span class="params"><span class="keyword">string</span> head, <span class="keyword">string</span> torso, <span class="keyword">string</span> leg</span>)</span></span><br><span class="line"><span class="function"></span>  {</span><br><span class="line">    <span class="keyword">this</span>.Head = head;</span><br><span class="line">    <span class="keyword">this</span>.Torso = torso;</span><br><span class="line">    <span class="keyword">this</span>.Leg = leg;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>接着我们开始创造积木人，先采用直接 new 的方式：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> {</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">      LegoMan man1 = <span class="keyword">new</span> LegoMan(<span class="string">"head1"</span>, <span class="string">"torso1"</span>, <span class="string">"leg1"</span>);</span><br><span class="line">      LegoMan man2 = <span class="keyword">new</span> LegoMan(<span class="string">"head2"</span>, <span class="string">"torso2"</span>, <span class="string">"leg2"</span>);</span><br><span class="line">      ...</span><br><span class="line">      LegoMan man10 = <span class="keyword">new</span> LegoMan(<span class="string">"head10"</span>, <span class="string">"torso10"</span>, <span class="string">"leg10"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>现在我们得到了 10 个积木人，接下来我们对积木人作出一些限制，我们现在需要 10 个士兵积木人，由于士兵的制服统一，那么这一百个积木人的下半身是完全一样的，也就是说除了 Head，积木人的 Torso 和 Leg 都是一样的。现在我们继续创建十个士兵积木人。好吧，和上面的例子一样，只是传入的后两个参数均一致。</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LegoMan manN = <span class="keyword">new</span> LegoMan(<span class="string">"headN"</span>, <span class="string">"torsoStandard"</span>, <span class="string">"legStandard"</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>接下来，我们思考这样一个问题，如果需要 1000 个士兵积木人呢？如果采用一般的方式，需要创建 1000 个实例对象，但是这 1000 个对象都有着共同的部分，就是它们的 Torso 和 Leg。那我们可不可以把共同的部分抽取出来呢？当然可以，现在我们把 Torso 和 Leg 整合为一个 Body 类，如下：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Body</span></span><br><span class="line">{</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Torso;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Leg;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Body</span>(<span class="params"><span class="keyword">string</span> torso, <span class="keyword">string</span> leg</span>)</span></span><br><span class="line"><span class="function"></span>  {</span><br><span class="line">    <span class="keyword">this</span>.Torso = torso;</span><br><span class="line">    <span class="keyword">this</span>.Leg = leg;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>既然 Body 被提取出来了，那么 LegoMan 这个类也要被重写了，如下：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">LegoMan</span></span><br><span class="line">{</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">string</span> Head;</span><br><span class="line">  <span class="keyword">public</span> Body BodyIntrinsic;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LegoMan</span>(<span class="params"><span class="keyword">string</span> head, Body body</span>)</span></span><br><span class="line"><span class="function"></span>  {</span><br><span class="line">    <span class="keyword">this</span>.Head = head;</span><br><span class="line">    <span class="keyword">this</span>.BodyIntrinsic = body;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>现在我们再来创建 1000 个积木人士兵的话，应该是这样：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> {</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">      <span class="comment">//先创建一个通用的 Body </span></span><br><span class="line">      Body bodyStandard = <span class="keyword">new</span> Body(<span class="string">"torsoStandard"</span>, <span class="string">"legStandard"</span>);</span><br><span class="line">      </span><br><span class="line">      LegoMan man1 = <span class="keyword">new</span> LegoMan(<span class="string">"head1"</span>, bodyStandard);</span><br><span class="line">      LegoMan man2 = <span class="keyword">new</span> LegoMan(<span class="string">"head2"</span>, bodyStandard);</span><br><span class="line">      ...</span><br><span class="line">      LegoMan man1000 = <span class="keyword">new</span> LegoMan(<span class="string">"head1000"</span>, bodyStandard);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>发现了吗？现在虽然也是1000个 LegoMan 的实例，但是却只有一个 Body，也就是说，1000个积木人士兵 的 Head，共享了一个 Body。听起来很疯狂，九头蛇也才九头，一千个头的怪物得多可怕！？哈哈，虽然积木人的玩具不可能这么拼，但是程序里，这种共享机制是可行的。Body 就是享元模式中的内部状态，一个重复度很高的细粒度单元。而 Head 则对应外部状态，会随着需求发生变化。这么分离的好处也很明显，就是大大减少了总数据量。如果不分离内外部，创建 1000 个积木人士兵的成本就是1000个 Head 和1000个 Body，而采用分离策略后，就只需要1000个 Head 外加1个 Body了。当随着创建对象数量级的增大，这种策略带来的好处会越来越明显。</p>
+<h1 id="三、完整的享元模式"><a href="#三、完整的享元模式" class="headerlink" title="三、完整的享元模式"></a>三、完整的享元模式</h1><p>理解了分离内外部的原因后，下面简单实现一下享元模式</p>
+<h2 id="1-Flyweight抽象类"><a href="#1-Flyweight抽象类" class="headerlink" title="1.Flyweight抽象类"></a>1.Flyweight抽象类</h2><p>通过最上面的 UML 图可以看出，Flyweight 被分为两部分，ConcreteFlyweight（共享的内部）和UnsharedConcreteFlyweight（不可共享的外部）。所以 Flyweight 最好被做成接口，或者抽象类，这里用抽象类实现，如下：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Flyweight</span> </span><br><span class="line">{</span><br><span class="line">    <span class="comment">//内部状态</span></span><br><span class="line">    <span class="keyword">public</span> String intrinsic;</span><br><span class="line">    <span class="comment">//外部状态</span></span><br><span class="line">    <span class="keyword">public</span> String extrinsic;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//要求享元角色必须接受外部状态</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Flyweight</span>(<span class="params">String extrinsic</span>) </span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        <span class="keyword">this</span>.extrinsic = extrinsic;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义业务操作</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Operate</span>(<span class="params"><span class="keyword">int</span> extrinsic</span>)</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="2-ConcreteFlyweight类"><a href="#2-ConcreteFlyweight类" class="headerlink" title="2. ConcreteFlyweight类"></a>2. ConcreteFlyweight类</h2><figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConcreteFlyweight</span> : <span class="title">Flyweight</span> </span><br><span class="line">{</span><br><span class="line">    <span class="comment">//接受外部状态</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteFlyweight</span>(<span class="params">String extrinsic</span>):<span class="title">base</span>(<span class="params">extrinsic</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        Debug.Log(<span class="string">"共享的 "</span> + extrinsic);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据外部状态进行逻辑处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operate</span>(<span class="params"><span class="keyword">string</span> extrinsic</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        Debug.Log(<span class="string">"处理共享数据 "</span> + extrinsic);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-UnsharedConcreteFlyweight类"><a href="#3-UnsharedConcreteFlyweight类" class="headerlink" title="3. UnsharedConcreteFlyweight类"></a>3. UnsharedConcreteFlyweight类</h2><figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UnsharedConcreteFlyweight</span> : <span class="title">Flyweight</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UnsharedConcreteFlyweight</span>(<span class="params">String extrinsic</span>):<span class="title">base</span>(<span class="params">extrinsic</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        Debug.Log(<span class="string">"非共享的 "</span> + extrinsic);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operate</span>(<span class="params"><span class="keyword">int</span> extrinsic</span>) </span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        Debug.Log(<span class="string">"处理非共享数据 "</span> + extrinsic);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="4-FlyweightFactory类"><a href="#4-FlyweightFactory类" class="headerlink" title="4. FlyweightFactory类"></a>4. FlyweightFactory类</h2><p>既然是处理大量数据，那免不了用一个对象池来进行管理，如下：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FlyweightFactory</span> </span><br><span class="line">{</span><br><span class="line">    <span class="comment">//定义一个池容器</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;Flyweight&gt; pool = <span class="keyword">new</span> List&lt;Flyweight&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//享元工厂</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Flyweight <span class="title">GetFlyweight</span>(<span class="params">String extrinsic</span>) </span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        <span class="keyword">var</span> flyweight = pool.Find(obj =&gt; obj.extrinsic == extrinsic);</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">if</span> (flyweight == <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            flyweight = <span class="keyword">new</span> ConcreteFlyweight(extrinsic);</span><br><span class="line">            pool.Add(flyweight);</span><br><span class="line">            Debug.Log(<span class="string">"新创建 "</span> + extrinsic);</span><br><span class="line">        }</span><br><span class="line">      	<span class="keyword">else</span></span><br><span class="line">      	{</span><br><span class="line">          	Debug.Log(<span class="string">"从池中取出 "</span> + extrinsic);</span><br><span class="line">      	}</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">return</span> flyweight;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="5-客户端的调用"><a href="#5-客户端的调用" class="headerlink" title="5.客户端的调用"></a>5.客户端的调用</h2><figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Client</span> {</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        Flyweight flyweight1 = FlyweightFactory.GetFlyweight(<span class="string">"one"</span>);</span><br><span class="line">        flyweight1.Operate(<span class="string">"one"</span>);</span><br><span class="line">        </span><br><span class="line">        Flyweight flyweight2 = FlyweightFactory.GetFlyweight(<span class="string">"two"</span>);</span><br><span class="line">        flyweight2.Operate(<span class="string">"two"</span>);</span><br><span class="line">        </span><br><span class="line">        Flyweight flyweight3 = FlyweightFactory.getFlyweight(<span class="string">"one"</span>);</span><br><span class="line">        flyweight3.Operate(<span class="string">"one"</span>);</span><br><span class="line">        </span><br><span class="line">        Flyweight unsharedFlyweight = <span class="keyword">new</span> UnsharedConcreteFlyweight(<span class="string">"one"</span>);</span><br><span class="line">        unsharedFlyweight.operate(<span class="string">"one"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>打印结果如下：<br>新创建 one<br>处理共享数据 one<br>新创建 two<br>处理共享数据 two<br>从池中取出 one<br>处理共享数据 one<br>非共享的 one<br>处理非共享数据 one</p>
+<p>参考博客：<br><a href="https://www.cnblogs.com/adamjwh/p/9070107.html" target="_blank" rel="noopener">https://www.cnblogs.com/adamjwh/p/9070107.html</a><br><a href="https://blog.csdn.net/justloveyou_/article/details/55045638" target="_blank" rel="noopener">https://blog.csdn.net/justloveyou_/article/details/55045638</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Design-Pattern-命令模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/13/Design-Pattern-命令模式/" class="post-title-link" itemprop="url">Design_Pattern_命令模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-13 19:49:20" itemprop="dateCreated datePublished" datetime="2019-08-13T19:49:20+08:00">2019-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="设计模式：命令模式"><a href="#设计模式：命令模式" class="headerlink" title="设计模式：命令模式"></a>设计模式：命令模式</h1><p><strong>命令模式在GoF中的定义是：</strong></p>
+<blockquote>
+<p>将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化； 对请求排队或记录请求日志，以及支持可撤销的操作。<br>命令模式是一种回调的面向对象实现。</p>
+</blockquote>
+<p><strong>游戏设计模式里把它精简为：</strong></p>
+<blockquote>
+<p>命令是具现化的方法调用。</p>
+</blockquote>
+<p>两种术语都意味着将概念变成数据一个对象可以存储在变量中，传给函数。<br>所以称命令模式为“具现化方法调用”，意思是方法调用被存储在对象中。<br>类似C#里的回调<br>把一个对象传递到方法中，让方法内部解析。</p>
+<p>下面是一个C#版本的角色控制，传入一个角色，就能调用对应的各种行动。</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 命令基类</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Command</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Execute</span>(<span class="params">BaseCharacter character</span>)</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 跳的命令</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">JumpCommand</span> : <span class="title">Command</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Execute</span>(<span class="params">BaseCharacter character</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        character.Jump();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 射击的命令</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FireCommand</span> : <span class="title">Command</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Execute</span>(<span class="params">BaseCharacter character</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        character.Fire();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 移动的命令</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MoveCommand</span> : <span class="title">Command</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Execute</span>(<span class="params">BaseCharacter character</span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 对输入的解析</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">InputHandler</span></span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> JumpCommand buttonA;</span><br><span class="line">    <span class="keyword">private</span> FireCommand buttonD;</span><br><span class="line">    <span class="keyword">private</span> MoveCommand buttonW;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Command <span class="title">HandleInputAction</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.A)) { <span class="keyword">return</span> buttonA; }</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.D)) { <span class="keyword">return</span> buttonD; }</span><br><span class="line">        <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.W)) { <span class="keyword">return</span> buttonW; }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Player mPlayer;</span><br><span class="line">    <span class="keyword">private</span> Enemy mEnemy;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Command</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        Command command = HandleInputAction();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (command != <span class="literal">null</span>)</span><br><span class="line">        {</span><br><span class="line">            command.Execute(mPlayer);</span><br><span class="line">            command.Execute(mEnemy);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">BaseCharacter</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Fire</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        <span class="keyword">base</span>.Fire();</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Jump</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        <span class="keyword">base</span>.Jump();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Enemy</span> : <span class="title">BaseCharacter</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Fire</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    {</span><br><span class="line">        <span class="keyword">base</span>.Fire();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 角色的基类</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">BaseCharacter</span></span><br><span class="line">{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Jump</span>(<span class="params"></span>)</span> { }</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Fire</span>(<span class="params"></span>)</span> { }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Design-Pattern-状态模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -800,281 +1081,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/简单UI框架/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhaori">
-      <meta itemprop="description" content="笔记记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朝日">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/09/简单UI框架/" class="post-title-link" itemprop="url">简单UI框架</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-07-09 10:18:04" itemprop="dateCreated datePublished" datetime="2019-07-09T10:18:04+08:00">2019-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>简单的UI框架，方便以后复制</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.EventSystems;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">IL</span></span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> UILevel</span><br><span class="line">    {</span><br><span class="line">        Bottom,<span class="comment">//底层</span></span><br><span class="line">        Common, <span class="comment">//普通层</span></span><br><span class="line">        Top,<span class="comment">//最前层</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public class UIMgr : ASingleton&lt;UIMgr&gt;</span><br><span class="line">    {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Dictionary&lt;<span class="keyword">string</span>, PanelView&gt; mAllPanel = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, PanelView&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Transform mBottomTrans;</span><br><span class="line">        <span class="keyword">private</span> Transform mCommonTrans;</span><br><span class="line">        <span class="keyword">private</span> Transform mTopTrans;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Canvas mCanvas;</span><br><span class="line">        <span class="keyword">private</span> CanvasScaler mCanvasScaler;</span><br><span class="line">        <span class="keyword">private</span> GraphicRaycaster mGraphicRaycaster;</span><br><span class="line">        <span class="keyword">private</span> RectTransform mRectTransform;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> EventSystem mEventSystem;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Transform UIRoot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        {</span><br><span class="line">            UIRoot = GameObject.Instantiate(ResMgr.Ins.Load&lt;GameObject&gt;(AssetBundleName.UI,<span class="string">"uiroot"</span>)).transform;</span><br><span class="line">            GameObject.DontDestroyOnLoad(UIRoot);</span><br><span class="line"></span><br><span class="line">            mBottomTrans = UIRoot.Find(<span class="string">"Bottom"</span>);</span><br><span class="line">            mCommonTrans = UIRoot.Find(<span class="string">"Common"</span>);</span><br><span class="line">            mTopTrans = UIRoot.Find(<span class="string">"Top"</span>);</span><br><span class="line"></span><br><span class="line">            mCanvas = UIRoot.GetComponent&lt;Canvas&gt;();</span><br><span class="line">            mCanvasScaler = UIRoot.GetComponent&lt;CanvasScaler&gt;();</span><br><span class="line">            mGraphicRaycaster = UIRoot.GetComponent&lt;GraphicRaycaster&gt;();</span><br><span class="line">            mRectTransform = UIRoot.GetComponent&lt;RectTransform&gt;();</span><br><span class="line"></span><br><span class="line">            mEventSystem = UIRoot.Find(<span class="string">"EventSystem"</span>).GetComponent&lt;EventSystem&gt;();</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> RectTransform RectTransform</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">get</span> { <span class="keyword">return</span> mRectTransform; }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> GraphicRaycaster GraphicRaycaster</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">get</span> { <span class="keyword">return</span> mGraphicRaycaster; }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> Canvas RootCanvas</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">get</span> { <span class="keyword">return</span> mCanvas; }</span><br><span class="line">        }</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 设置分辨率</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="width"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="height"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetResolution</span>(<span class="params"><span class="keyword">int</span> width, <span class="keyword">int</span> height</span>)</span></span><br><span class="line"><span class="function"></span>        {</span><br><span class="line">            mCanvasScaler.referenceResolution = <span class="keyword">new</span> Vector2(width, height);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> T OpenUI&lt;T&gt;(<span class="keyword">string</span> PanelName, UILevel uiLevel) <span class="keyword">where</span> T:PanelView</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">if</span> (!mAllPanel.ContainsKey(PanelName))</span><br><span class="line">            {</span><br><span class="line">                CreateUI(<span class="keyword">typeof</span>(T), PanelName, uiLevel);</span><br><span class="line">            }</span><br><span class="line">            mAllPanel[PanelName].SetActive(<span class="literal">true</span>);</span><br><span class="line">            <span class="keyword">return</span> mAllPanel[PanelName]<span class="keyword">as</span> T;</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">void</span> OpenUIAsync&lt;T&gt;(<span class="keyword">string</span> PanelName, Action&lt;UnityEngine.Object&gt; onLoaded = <span class="literal">null</span>) <span class="keyword">where</span> T : PanelView, <span class="keyword">new</span>()</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">if</span> (!mAllPanel.ContainsKey(PanelName))</span><br><span class="line">            {</span><br><span class="line">                CreateUIAsync&lt;T&gt;(PanelName,onLoaded);</span><br><span class="line">            }</span><br><span class="line">            onLoaded(<span class="literal">null</span>);</span><br><span class="line">           <span class="comment">// return mAllPanel[PanelName];</span></span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">void</span> CreateUIAsync&lt;T&gt;(<span class="keyword">string</span> panelName, Action&lt;UnityEngine.Object&gt; onLoaded) <span class="keyword">where</span> T : PanelView, <span class="keyword">new</span>()</span><br><span class="line">        {</span><br><span class="line">            ResMgr.Ins.LoadAsync(AssetBundleName.UI, panelName,onLoaded);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">CreateUI</span>(<span class="params">Type type, <span class="keyword">string</span> panelName, UILevel uiLevel</span>) </span></span><br><span class="line"><span class="function"></span>        {</span><br><span class="line">            PanelView panelView = Activator.CreateInstance(type) <span class="keyword">as</span> PanelView;</span><br><span class="line"></span><br><span class="line">            Transform parent;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">switch</span> (uiLevel)</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">case</span> UILevel.Bottom:</span><br><span class="line">                    parent = mBottomTrans;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> UILevel.Common:</span><br><span class="line">                    parent = mCommonTrans;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> UILevel.Top:</span><br><span class="line">                    parent = mTopTrans;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    parent = mCommonTrans;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            GameObject ui = GameObject.Instantiate(ResMgr.Ins.Load&lt;GameObject&gt;(AssetBundleName.UI, panelName), parent);</span><br><span class="line">            ui.name = panelName;</span><br><span class="line">            panelView.SetGameObject(ui);</span><br><span class="line">            panelView.Init();</span><br><span class="line">            mAllPanel.Add(panelName, panelView);</span><br><span class="line"></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> ViewType Open&lt;ViewType&gt;(UILevel uiLevel = UILevel.Common) <span class="keyword">where</span> ViewType : PanelView</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">return</span> OpenUI&lt;ViewType&gt;( GetName&lt;ViewType&gt;(), uiLevel);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> OpenAsync&lt;T&gt;( Action&lt;UnityEngine.Object&gt; onLoaded = <span class="literal">null</span>) </span><br><span class="line">        {</span><br><span class="line">            OpenUIAsync&lt;PanelView&gt;(GetName&lt;T&gt;(), onLoaded);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">string</span> GetName&lt;T&gt;()</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">if</span> (Runtime.Ins.IsHotResProject)</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">string</span> name = <span class="keyword">typeof</span>(T).ToString();</span><br><span class="line">                <span class="keyword">return</span> name.Replace(<span class="string">"Type : "</span>, <span class="string">""</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">string</span> name = <span class="keyword">typeof</span>(T).ToString();</span><br><span class="line">                <span class="keyword">string</span>[] nameSplits = name.Split(<span class="string">'.'</span>);</span><br><span class="line">                <span class="keyword">return</span> nameSplits[nameSplits.Length - <span class="number">1</span>];</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">//return name;</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/17/LearnOpenGL-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhaori">
-      <meta itemprop="description" content="笔记记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朝日">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/17/LearnOpenGL-2/" class="post-title-link" itemprop="url">LearnOpenGL(2)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-17 16:00:02" itemprop="dateCreated datePublished" datetime="2019-06-17T16:00:02+08:00">2019-06-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图形学/" itemprop="url" rel="index"><span itemprop="name">图形学</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><strong>颜色向量(Color Vector)</strong>：一个通过红绿蓝(RGB)分量的组合描绘大部分真实颜色的向量。一个物体的颜色实际上是该物体所不能吸收的反射颜色分量。</li>
-<li><strong>冯氏光照模型(Phong Lighting Model)</strong>：一个通过计算环境光，漫反射，和镜面光分量的值来估计真实光照的模型。</li>
-<li><strong>环境光照(Ambient Lighting)</strong>：通过给每个没有被光照的物体很小的亮度，使其不是完全黑暗的，从而对全局光照进行估计。</li>
-<li><strong>漫反射着色(Diffuse Shading)</strong>：一个顶点/片段与光线方向越接近，光照会越强。使用了法向量来计算角度。</li>
-<li><strong>法向量(Normal Vector)</strong>：一个垂直于平面的单位向量。</li>
-<li><strong>法线矩阵(Normal Matrix)</strong>：一个3x3矩阵，或者说是没有平移的模型（或者模型-观察）矩阵。它也被以某种方式修改（逆转置），从而在应用非统一缩放时，保持法向量朝向正确的方向。否则法向量会在使用非统一缩放时被扭曲。</li>
-<li><strong>镜面光照(Specular Lighting)</strong>：当观察者视线靠近光源在表面的反射线时会显示的镜面高光。镜面光照是由观察者的方向，光源的方向和设定高光分散量的反光度值三个量共同决定的。</li>
-<li><strong>冯氏着色(Phong Shading)</strong>：冯氏光照模型应用在片段着色器。</li>
-<li><strong>Gouraud着色(Gouraud shading)</strong>：冯氏光照模型应用在顶点着色器上。在使用很少数量的顶点时会产生明显的瑕疵。会得到效率提升但是损失了视觉质量。</li>
-<li><strong>GLSL结构体(GLSL struct)</strong>：一个类似于C的结构体，用作着色器变量的容器。大部分时间用来管理输入/输出/uniform。</li>
-<li><strong>材质(Material)</strong>：一个物体反射的环境光，漫反射，镜面光颜色。这些东西设定了物体所拥有的颜色。</li>
-<li><strong>光照属性(Light(properties))</strong>：一个光的环境光，漫反射，镜面光的强度。可以使用任何颜色值，对每一个冯氏分量(Phong Component)定义光源发出的颜色/强度。</li>
-<li><strong>漫反射贴图(Diffuse Map)</strong>：一个设定了每个片段中漫反射颜色的纹理图片。</li>
-<li><strong>镜面光贴图(Specular Map)</strong>：一个设定了每一个片段的镜面光强度/颜色的纹理贴图。仅在物体的特定区域显示镜面高光。</li>
-<li><strong>定向光(Directional Light)</strong>：只有一个方向的光源。它被建模为不管距离有多长所有光束都是平行而且其方向向量在整个场景中保持不变。</li>
-<li><strong>点光源(Point Light)</strong>：一个在场景中有位置的，光线逐渐衰减的光源。</li>
-<li><strong>衰减(Attenuation)</strong>：光随着距离减少强度的过程，通常使用在点光源和聚光下。</li>
-<li><strong>聚光(Spotlight)</strong>：一个被定义为在某一个方向上的锥形的光源。</li>
-<li><strong>手电筒(Flashlight)</strong>：一个摆放在观察者视角的聚光。</li>
-<li><strong>GLSL uniform数组(GLSL Uniform Array)</strong>：一个uniform值数组。它的工作原理和C语言数组大致一样，只是不能动态分配内存。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/12/LearnOpenGL-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhaori">
-      <meta itemprop="description" content="笔记记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朝日">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/12/LearnOpenGL-1/" class="post-title-link" itemprop="url">LearnOpenGL-1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-12 18:48:02" itemprop="dateCreated datePublished" datetime="2019-06-12T18:48:02+08:00">2019-06-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图形学/" itemprop="url" rel="index"><span itemprop="name">图形学</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><strong>OpenGL</strong>： 一个定义了函数布局和输出的图形API的正式规范。</li>
-<li><strong>GLAD</strong>： 一个拓展加载库，用来为我们加载并设定所有OpenGL函数指针，从而让我们能够使用所有（现代）OpenGL函数。</li>
-<li><strong>视口(Viewport)</strong>： 我们需要渲染的窗口。</li>
-<li><strong>图形管线(Graphics Pipeline)</strong>： 一个顶点在呈现为像素之前经过的全部过程。</li>
-<li><strong>着色器(Shader)</strong>： 一个运行在显卡上的小型程序。很多阶段的图形管道都可以使用自定义的着色器来代替原有的功能。</li>
-<li><strong>标准化设备坐标(Normalized Device Coordinates, NDC)</strong>： 顶点在通过在剪裁坐标系中剪裁与透视除法后最终呈现在的坐标系。所有位置在NDC下-1.0到1.0的顶点将不会被丢弃并且可见。</li>
-<li><strong>顶点缓冲对象(Vertex Buffer Object)</strong>： 一个调用显存并存储所有顶点数据供显卡使用的缓冲对象。</li>
-<li><strong>顶点数组对象(Vertex Array Object)</strong>： 存储缓冲区和顶点属性状态。</li>
-<li><strong>索引缓冲对象(Element Buffer Object)</strong>： 一个存储索引供索引化绘制使用的缓冲对象。</li>
-<li><strong>Uniform</strong>： 一个特殊类型的GLSL变量。它是全局的（在一个着色器程序中每一个着色器都能够访问uniform变量），并且只需要被设定一次。</li>
-<li><strong>纹理(Texture)</strong>： 一种包裹着物体的特殊类型图像，给物体精细的视觉效果。</li>
-<li><strong>纹理缠绕(Texture Wrapping)</strong>： 定义了一种当纹理顶点超出范围(0, 1)时指定OpenGL如何采样纹理的模式。</li>
-<li><strong>纹理过滤(Texture Filtering)</strong>： 定义了一种当有多种纹素选择时指定OpenGL如何采样纹理的模式。这通常在纹理被放大情况下发生。</li>
-<li><strong>多级渐远纹理(Mipmaps)</strong>： 被存储的材质的一些缩小版本，根据距观察者的距离会使用材质的合适大小。</li>
-<li><strong>stb_image.h</strong>： 图像加载库。</li>
-<li><strong>纹理单元(Texture Units)</strong>： 通过绑定纹理到不同纹理单元从而允许多个纹理在同一对象上渲染。</li>
-<li><strong>向量(Vector)</strong>： 一个定义了在空间中方向和/或位置的数学实体。</li>
-<li><strong>矩阵(Matrix)</strong>： 一个矩形阵列的数学表达式。</li>
-<li><strong>GLM</strong>： 一个为OpenGL打造的数学库。</li>
-<li><strong>局部空间(Local Space)</strong>： 一个物体的初始空间。所有的坐标都是相对于物体的原点的。</li>
-<li><strong>世界空间(World Space)</strong>： 所有的坐标都相对于全局原点。</li>
-<li><strong>观察空间(View Space)</strong>： 所有的坐标都是从摄像机的视角观察的。</li>
-<li><strong>裁剪空间(Clip Space)</strong>： 所有的坐标都是从摄像机视角观察的，但是该空间应用了投影。这个空间应该是一个顶点坐标最终的空间，作为顶点着色器的输出。OpenGL负责处理剩下的事情（裁剪/透视除法）。</li>
-<li><strong>屏幕空间(Screen Space)</strong>： 所有的坐标都由屏幕视角来观察。坐标的范围是从0到屏幕的宽/高。</li>
-<li><strong>LookAt矩阵</strong>： 一种特殊类型的观察矩阵，它创建了一个坐标系，其中所有坐标都根据从一个位置正在观察目标的用户旋转或者平移。</li>
-<li><strong>欧拉角(Euler Angles)</strong>： 被定义为偏航角(Yaw)，俯仰角(Pitch)，和滚转角(Roll)从而允许我们通过这三个值构造任何3D方向。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1140,20 +1150,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
