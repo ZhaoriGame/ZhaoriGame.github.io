@@ -77,9 +77,9 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="朝日" type="application/atom+xml">
 
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="朝日" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -160,6 +160,435 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/02/记录一些HLSL常用函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/02/记录一些HLSL常用函数/" class="post-title-link" itemprop="url">记录一些HLSL常用函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-03-02 14:40:17 / Modified: 14:42:08" itemprop="dateCreated datePublished" datetime="2023-03-02T14:40:17+08:00">2023-03-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HLSL/" itemprop="url" rel="index"><span itemprop="name">HLSL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>查看函数图像网站：<a href="https://graphtoy.com/" target="_blank" rel="noopener">https://graphtoy.com/</a></p>
+<h2 id="基础数学运算"><a href="#基础数学运算" class="headerlink" title="基础数学运算"></a>基础数学运算</h2><ul>
+<li>max（a, b） 返回较大的数</li>
+<li>min（a, b） 返回较小的数</li>
+<li>mul（a, b） 两变量相乘，常用于矩阵运算</li>
+<li>abs（a） 返回a的绝对值</li>
+<li>round (x) 返回与x最近的整数</li>
+<li>sqrt (x) 返回x的平方根</li>
+<li>rsqrt (x) 返回x的平方根的倒数</li>
+<li>degrees (x) 弧度转角度</li>
+<li>redians (x) 角度转弧度</li>
+<li>noise (x) 噪声</li>
+</ul>
+<h2 id="幂指对函数"><a href="#幂指对函数" class="headerlink" title="幂指对函数"></a>幂指对函数</h2><ul>
+<li>pow (x, y) x的y次幂</li>
+<li>exp (x) 返回e为底的指数函数</li>
+<li>exp2 (value x) 返回以2位底，x为指数幂</li>
+<li>ldexp (x, exp) 返回与2exp次方的乘积</li>
+<li>log (x) 返回指定值得以e为底数的对数</li>
+<li>log10 (x) 求以10为底的对数</li>
+<li>log2 (x) 求以2为底的对数</li>
+<li>frexp (x , out exp) 将浮点数分解成尾数和指数，x的返回值是尾数,exp参数返回的值是指数</li>
+</ul>
+<h2 id="三角函数和双曲线函数"><a href="#三角函数和双曲线函数" class="headerlink" title="三角函数和双曲线函数"></a>三角函数和双曲线函数</h2><ul>
+<li>sin（x）、cos（x）、tan（x） 三角函数</li>
+<li>asin（x）、acos（x）、atan（x） 反三角函数</li>
+<li>sincos（x，out s，out c） 返回x的正弦和余弦</li>
+<li>tan（y，x） 返回y/x的正切</li>
+<li>atan2（y，x） 返回y/x的反正切</li>
+<li>sinh（x） 返回x的双曲正弦值</li>
+<li>cosh（x） 返回x的双曲余弦值</li>
+<li>tanh（x） 返回x的双曲正弦值</li>
+</ul>
+<h2 id="处理数值函数"><a href="#处理数值函数" class="headerlink" title="处理数值函数"></a>处理数值函数</h2><ul>
+<li>ceil（x） 返回&gt;=x的最小整数（向下取整）</li>
+<li>floor（x） 返回&lt;=x的最大整数（向上取整）</li>
+<li>step（x，y） x&lt;=y返回1，否则返回0</li>
+<li>saturate（x） 返回将x钳制到[0,1]范围之间的值</li>
+<li>clamp（x，min，max） 将x限制在[min，max]范围的值，比min小返回min，比max大返回max</li>
+<li>fmord（x，y） 返回x对y取余的余数</li>
+<li>frac（x） 取x的小数部分</li>
+<li>modf（x，out ip） 将x分为小数和整数部分（输出的ip为整数部分，返回值为小数部分）</li>
+<li>lerp（x，y，s） 按照s在x到y之间插值，返回</li>
+<li>smoothstep（min，max，x） 如果x在[min，max]范围内，就返回介于[0，1]之间的平滑Hermite插值，使用smoothstep在两个值创建平滑过渡</li>
+</ul>
+<h2 id="条件判断函数"><a href="#条件判断函数" class="headerlink" title="条件判断函数"></a>条件判断函数</h2><ul>
+<li>all（x） 确定指定量的所有分量是否均为非零，均非零则返回true，否则返回false</li>
+<li>clip（x） 如果输入值小于零，则丢弃当前像素 常用于判定范围(不仅仅针对0,返回值为void) <strong>常用于Alpha测试，如果每个分量代表到平面的距离，还可以用来模拟剪切平面</strong></li>
+<li>sign（x） 返回x的正负性 如果x小于零返回-1，如果x等于零返回0，如果x大于零返回1</li>
+<li>isinf（x） 如果x参数为+ INF或-INF(无穷+无穷仍无穷，0x3f3f3f3f)，返回true，否则返回False</li>
+<li>isfinite（x） 判断x参数是有限，即有界的，与isinf(x)相反</li>
+<li>isnan（x） 如果x参数为NAN(非数字)，返回true，否则返回false</li>
+</ul>
+<h2 id="向量和矩阵函数"><a href="#向量和矩阵函数" class="headerlink" title="向量和矩阵函数"></a>向量和矩阵函数</h2><ul>
+<li>length(v) 返回向量的长度</li>
+<li>normalize(v) 向量归一化</li>
+<li>distance(a,b) 返回两个向量之间的距离，不平行的两个向量应该为0，此处表示为根号下各分量之差的平方和</li>
+<li>dot(a,b) 返回a和b两向量的点积</li>
+<li>cross(a,b) 返回a和b两向量的叉积，返回值是向量，并且与a,b都垂直</li>
+<li>determinant(m) 返回指定浮点矩阵的按行列式方式计算的值</li>
+<li>transpose(m) 返回矩阵m的转置矩阵</li>
+</ul>
+<h2 id="光线预算函数"><a href="#光线预算函数" class="headerlink" title="光线预算函数"></a>光线预算函数</h2><ul>
+<li>reflect(i,n) 以i为入射向量n为法线方向的反射光</li>
+<li>refract(i,n,ri) 以i为入射向量n为法线方向,ri为折射率的折射光</li>
+<li>lit(n_dot_l,n_dot_h，m) 输入标量(normal,light,半角向量h,镜面反射系数m) 返回光照向量(环境光，漫反射光，镜面高光反射，1)<strong>该计算依据的是BlingPhong光照模型</strong></li>
+<li>faceforward(n,i,ng) 得到面向视图方向的曲面法向量输入输出为同元向量,返回-n*sign(dot(i,ng))(normal,light,normal)</li>
+</ul>
+<h2 id="纹理查找函数"><a href="#纹理查找函数" class="headerlink" title="纹理查找函数"></a>纹理查找函数</h2><h3 id="1D纹理查找函数"><a href="#1D纹理查找函数" class="headerlink" title="1D纹理查找函数"></a>1D纹理查找函数</h3><ul>
+<li>tex1D(s, t) 普通一维纹理查找 返回纹理采样器s在标量t位置的color4</li>
+<li>tex1D(s,t,ddx,ddy) 使用微分查询一维纹理， t和ddxy均为vector</li>
+<li>tex1Dlod(s, t) 使用LOD查找纹理s在t.w位置的color4</li>
+<li>tex1Dbias(s, t) 将t.w决定的某个MIP层偏置后的一维纹理查找</li>
+<li>tex1Dgrad(s,t,ddx,ddy) 使用微分并指定MIP层的一维纹理查找</li>
+<li>tex1Dproj(s, t) 把纹理当做一张幻灯片投影到场景中，先使用投影纹理技术需要计算出投影纹理坐标t(坐标t.w除以透视值)，然后使用投影纹理坐标进行查询</li>
+</ul>
+<h3 id="2D纹理查找函数"><a href="#2D纹理查找函数" class="headerlink" title="2D纹理查找函数"></a>2D纹理查找函数</h3><ul>
+<li>tex2D(s, t) 普通二维纹理查找 返回纹理采样器s在vector t位置的颜色</li>
+<li>ex2D(s,t,ddx,ddy) 使用微分查询二维纹理，t和ddxy均为vector</li>
+<li>tex2Dlod(s, t) 使用LOD查找纹理s在t.w位置的color4</li>
+<li>tex2Dbias(s, t) 将t.w决定的某个MIP层偏置后的二维纹理查找</li>
+<li>tex2Dgrad(s,t,ddx,ddy) 使用微分并指定MIP层的二维纹理查找</li>
+<li>tex2Dproj(s, t) 把纹理当做一张幻灯片投影到场景中，先使用投影纹理技术需要计算出投影纹理坐标t(坐标t.w除以透视值)，然后使用投影纹理坐标进行查询</li>
+</ul>
+<h3 id="3D纹理查找函数"><a href="#3D纹理查找函数" class="headerlink" title="3D纹理查找函数"></a>3D纹理查找函数</h3><ul>
+<li>tex3D(s, t) 普通三维纹理查找 返回纹理采样器s在vector t位置的颜色</li>
+<li>ex3D(s,t,ddx,ddy) 使用微分查询三维纹理，t和ddxy均为vector</li>
+<li>tex3Dlod(s, t) 使用LOD查找纹理s在t.w位置的color4</li>
+<li>tex3Dbias(s, t) 将t.w决定的某个MIP层偏置后的三维纹理查找</li>
+<li>tex3Dgrad(s,t,ddx,ddy) 使用微分并指定MIP层的三维纹理查找</li>
+<li>tex3Dproj(s, t) 把纹理当做一张幻灯片投影到场景中，先使用投影纹理技术需要计算出投影纹理坐标t(坐标t.w除以透视值)，然后使用投影纹理坐标进行查询</li>
+</ul>
+<h3 id="立体纹理查找"><a href="#立体纹理查找" class="headerlink" title="立体纹理查找"></a>立体纹理查找</h3><ul>
+<li>texCUBE(s,t) 返回纹理采样器s在vector t位置的颜色</li>
+<li>texCUBE(s,t,ddx,ddy) 使用微分查询立方体维纹理 ，t和ddxy均为vector</li>
+<li>texCUBEDload(s,t) 使用LOD查找纹理s在t.w位置的color4</li>
+<li>texCUBEbias(s,t) 将t.w决定的某个MIP层偏置后的立方体纹理查找</li>
+<li>texCUBEgrad(s,t,ddx,ddy) 使用微分并指定MIP层的立方体纹理查找</li>
+<li>texCUBEproj(s,t) 使用投影方式的立方体纹理查找</li>
+</ul>
+<h2 id="偏导函数ddx和ddy"><a href="#偏导函数ddx和ddy" class="headerlink" title="偏导函数ddx和ddy"></a>偏导函数ddx和ddy</h2><p>ddx(vector3)、ddy(vector3) ddx 和 ddy 用于求取相邻像素间某属性的差值</p>
+<p><img src="http://acgloby.com/wp-content/uploads/2021/11/ddx.png" alt="img"></p>
+<h3 id="Core-hlsl"><a href="#Core-hlsl" class="headerlink" title="Core.hlsl"></a>Core.hlsl</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GetVertexPositionInputs(float3 positionOS)</td>
+<td>获取输入顶点坐标信息</td>
+</tr>
+<tr>
+<td>GetVertexNormalInputs(float3 normalOS)</td>
+<td>获取输入顶点法线信息</td>
+</tr>
+<tr>
+<td>GetVertexNormalInputs(float3 normalOS, float4 tangentOS)</td>
+<td>获取输入顶点法线信息（重载）</td>
+</tr>
+<tr>
+<td>GetScaledScreenParams()</td>
+<td>获取屏幕缩放参数信息</td>
+</tr>
+<tr>
+<td>NormalizeNormalPerVertex(real3 normalWS)</td>
+<td>逐顶点法线正交</td>
+</tr>
+<tr>
+<td>NormalizeNormalPerPixel(real3 normalWS)</td>
+<td>逐像素法线正交</td>
+</tr>
+<tr>
+<td>ComputeScreenPos(float4 positionCS)</td>
+<td>计算屏幕坐标信息</td>
+</tr>
+<tr>
+<td>（real）ComputeFogFactor(float z)</td>
+<td>计算雾参数</td>
+</tr>
+<tr>
+<td>（real）ComputeFogIntensity(real fogFactor)</td>
+<td>计算雾强度</td>
+</tr>
+<tr>
+<td>（half3）MixFogColor(real3 fragColor, real3 fogColor, real fogFactor)</td>
+<td>混合雾颜色</td>
+</tr>
+<tr>
+<td>（half3）MixFog(real3 fragColor, real fogFactor)</td>
+<td>混合雾</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Lighting-hlsl"><a href="#Lighting-hlsl" class="headerlink" title="Lighting.hlsl"></a>Lighting.hlsl</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DistanceAttenuation(float distanceSqr, half2 distanceAttenuation)</td>
+<td>距离衰减</td>
+</tr>
+<tr>
+<td>AngleAttenuation(half3 spotDirection, half3 lightDirection, half2 spotAttenuation)</td>
+<td>角度衰减</td>
+</tr>
+<tr>
+<td>GetMainLight()/GetMainLight(float4 shadowCoord)</td>
+<td>获取主光源</td>
+</tr>
+<tr>
+<td>GetPerObjectLightIndex(int index)</td>
+<td>获取每个对象灯光Index</td>
+</tr>
+<tr>
+<td>GetAdditionalLightsCount()</td>
+<td>获取额外灯光数量</td>
+</tr>
+<tr>
+<td>ReflectivitySpecular(half3 specular)</td>
+<td>高光反射率</td>
+</tr>
+<tr>
+<td>OneMinusReflectivityMetallic(half metallic)</td>
+<td>OneMinus金属反射率</td>
+</tr>
+<tr>
+<td>InitializeBRDFData(half3 albedo, half metallic, half3 specular, half smoothness, half alpha, out BRDFData outBRDFData)</td>
+<td>初始化BRDF</td>
+</tr>
+<tr>
+<td>EnvironmentBRDF(BRDFData brdfData, half3 indirectDiffuse, half3 indirectSpecular, half fresnelTerm)</td>
+<td>环境BRDF</td>
+</tr>
+<tr>
+<td>DirectBDRF(BRDFData brdfData, half3 normalWS, half3 lightDirectionWS, half3 viewDirectionWS)</td>
+<td>BRDF</td>
+</tr>
+<tr>
+<td>SampleLightmap(float2 lightmapUV, half3 normalWS)</td>
+<td>光照贴图</td>
+</tr>
+<tr>
+<td>GlossyEnvironmentReflection(half3 reflectVector, half perceptualRoughness, half occlusion)</td>
+<td>环境光泽反射</td>
+</tr>
+<tr>
+<td>GlobalIllumination(BRDFData brdfData, half3 bakedGI, half occlusion, half3 normalWS, half3 viewDirectionWS)</td>
+<td>全局光照</td>
+</tr>
+<tr>
+<td>MixRealtimeAndBakedGI(inout Light light, half3 normalWS, inout half3 bakedGI, half4 shadowMask)</td>
+<td>实时烘培混合</td>
+</tr>
+<tr>
+<td>LightingLambert(half3 lightColor, half3 lightDir, half3 normal)</td>
+<td>兰伯特模型</td>
+</tr>
+<tr>
+<td>LightingSpecular(half3 lightColor, half3 lightDir, half3 normal, half3 viewDir, half4 specular, half smoothness)</td>
+<td>高光</td>
+</tr>
+<tr>
+<td>LightingPhysicallyBased(BRDFData brdfData, half3 lightColor, half3 lightDirectionWS, half lightAttenuation, half3 normalWS, half3 viewDirectionWS)/LightingPhysicallyBased(BRDFData brdfData, Light light, half3 normalWS, half3 viewDirectionWS)</td>
+<td>基于物理的光照模型</td>
+</tr>
+<tr>
+<td>VertexLighting(float3 positionWS, half3 normalWS)</td>
+<td>顶点光照颜色</td>
+</tr>
+<tr>
+<td>LightweightFragmentPBR(InputData inputData, half3 albedo, half metallic, half3 specular,half smoothness, half occlusion, half3 emission, half alpha)</td>
+<td>轻量级片元PBR</td>
+</tr>
+<tr>
+<td>LightweightFragmentBlinnPhong(InputData inputData, half3 diffuse, half4 specularGloss, half smoothness, half3 emission, half alpha)</td>
+<td>轻量级片元布林·冯</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Shadows-hlsl"><a href="#Shadows-hlsl" class="headerlink" title="Shadows.hlsl"></a>Shadows.hlsl</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GetMainLightShadowStrength()</td>
+<td>获取主光源阴影强度</td>
+</tr>
+<tr>
+<td>GetAdditionalLightShadowStrenth(int lightIndex)</td>
+<td>获取额外光源阴影强度</td>
+</tr>
+<tr>
+<td>SampleScreenSpaceShadowmap(float4 shadowCoord)</td>
+<td>屏幕空间阴影贴图</td>
+</tr>
+<tr>
+<td>SampleShadowmap(float4 shadowCoord, TEXTURE2D_SHADOW_PARAM(ShadowMap, sampler_ShadowMap), ShadowSamplingData samplingData, half shadowStrength, bool isPerspectiveProjection = true)</td>
+<td>阴影贴图</td>
+</tr>
+<tr>
+<td>TransformWorldToShadowCoord(float3 positionWS)</td>
+<td>把顶点的世界坐标转换到阴影坐标</td>
+</tr>
+<tr>
+<td>MainLightRealtimeShadow(float4 shadowCoord)</td>
+<td>主光源实时阴影</td>
+</tr>
+<tr>
+<td>AdditionalLightRealtimeShadow(int lightIndex, float3 positionWS)</td>
+<td>额外光源实时阴影</td>
+</tr>
+<tr>
+<td>GetShadowCoord(VertexPositionInputs vertexInput)</td>
+<td>获取阴影坐标信息</td>
+</tr>
+<tr>
+<td>ApplyShadowBias(float3 positionWS, float3 normalWS, float3 lightDirection)</td>
+<td>应用阴影偏移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="SpaceTransforms-hlsl"><a href="#SpaceTransforms-hlsl" class="headerlink" title="SpaceTransforms.hlsl"></a>SpaceTransforms.hlsl</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TransformObjectToWorld(float3 positionOS)</td>
+<td>当前模型空间转世界空间矩阵，通常用于把顶点/方向矢量从模型空间转到世界空间</td>
+</tr>
+<tr>
+<td>TransformWorldToObject(float3 positionWS)</td>
+<td>当前世界空间转模型空间矩阵，通常用于把顶点/方向矢量从世界空间转到模型空间</td>
+</tr>
+<tr>
+<td>TransformWorldToView(float3 positionWS)</td>
+<td>当前世界空间转相机空间矩阵，通常用于把顶点/方向矢量从世界空间转到相机空间</td>
+</tr>
+<tr>
+<td>TransformObjectToHClip(float3 positionOS)</td>
+<td>当前模型空间转裁剪空间矩阵，通常用于把顶点/方向矢量从模型空间转到裁剪空间</td>
+</tr>
+<tr>
+<td>TransformWorldToHClip(float3 positionWS)</td>
+<td>当前世界空间转裁剪空间矩阵，通常用于把顶点/方向矢量从世界空间转到裁剪空间</td>
+</tr>
+<tr>
+<td>TransformWViewToHClip(float3 positionVS)</td>
+<td>当前相机空间转裁剪空间矩阵，通常用于把顶点/方向矢量从相机空间转到裁剪空间</td>
+</tr>
+<tr>
+<td>TransformObjectToWorldDir(real3 dirOS)</td>
+<td>把方向矢量从模型空间转换到世界空间中</td>
+</tr>
+<tr>
+<td>TransformWorldToObjectDir(real3 dirWS)</td>
+<td>把方向矢量从世界空间转换到模型空间中</td>
+</tr>
+<tr>
+<td>TransformWorldToViewDir(real3 dirWS)</td>
+<td>把方向矢量从世界空间转换到相机空间中</td>
+</tr>
+<tr>
+<td>TransformWorldToHClipDir(real3 directionWS)</td>
+<td>把方向矢量从世界空间转换到裁剪空间中</td>
+</tr>
+<tr>
+<td>TransformObjectToWorldNormal(float3 normalOS)</td>
+<td>把法线从模型空间转换到世界空间中</td>
+</tr>
+<tr>
+<td>CreateTangentToWorld(real3 normal, real3 tangent, real flipSign)</td>
+<td>创建一个切线空间转为世界空间的3x3矩阵</td>
+</tr>
+<tr>
+<td>TransformTangentToWorld(real3 dirTS, real3x3 tangentToWorld)</td>
+<td>当前切线空间转世界空间矩阵，通常用于把顶点/方向矢量从切线空间转到世界空间</td>
+</tr>
+<tr>
+<td>TransformWorldToTangent(real3 dirWS, real3x3 tangentToWorld)</td>
+<td>当前世界空间转切线空间矩阵，通常用于把顶点/方向矢量从世界空间转到切线空间</td>
+</tr>
+<tr>
+<td>TransformTangentToObject(real3 dirTS, real3x3 tangentToWorld)</td>
+<td>当前切线空间转模型空间矩阵，通常用于把顶点/方向矢量从切线空间转到模型空间</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -899,88 +1328,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Design-Pattern-单例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhaori">
-      <meta itemprop="description" content="笔记记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朝日">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/13/Design-Pattern-单例/" class="post-title-link" itemprop="url">Design_Pattern_单例</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-08-13 19:48:30" itemprop="dateCreated datePublished" datetime="2019-08-13T19:48:30+08:00">2019-08-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h1><ul>
-<li>单例为最常见的一种设计模式，目前在用的主要有两种方式，一种是基于Unity的，一种是基于C#的</li>
-<li>一般来说，unity里的单例分为两种，一种是继承于Monobehaviour的，一种是不继承于它的；</li>
-<li>这里给出了两种实现方法</li>
-</ul>
-<p><strong>使用Unity里的方法</strong></p>
-<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ScriptSingleton&lt;T&gt;  : MonoBehaviour where T : ScriptSingleton&lt;T&gt;</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">protected</span> <span class="keyword">static</span> T _instance;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">get</span></span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">if</span> (_instance == <span class="literal">null</span>)</span><br><span class="line">                {</span><br><span class="line">                    <span class="comment">//从场景中找T脚本的对象</span></span><br><span class="line">                    _instance = FindObjectOfType&lt;T&gt;();</span><br><span class="line">                    <span class="keyword">if</span> (FindObjectsOfType&lt;T&gt;().Length &gt; <span class="number">1</span>)</span><br><span class="line">                    {</span><br><span class="line">                        Debug.LogError(<span class="string">"场景中的单例脚本数量 &gt; 1:"</span> + _instance.GetType().ToString());</span><br><span class="line">                        <span class="keyword">return</span> _instance;</span><br><span class="line">                    }</span><br><span class="line">                    <span class="comment">//场景中找不到的情况</span></span><br><span class="line">                    <span class="keyword">if</span> (_instance == <span class="literal">null</span>)</span><br><span class="line">                    {</span><br><span class="line">                        <span class="keyword">string</span> instanceName = <span class="keyword">typeof</span>(T).Name;</span><br><span class="line">                        GameObject instanceGO = GameObject.Find(instanceName);</span><br><span class="line">                        <span class="keyword">if</span> (instanceGO == <span class="literal">null</span>)</span><br><span class="line">                        {</span><br><span class="line">                            instanceGO = <span class="keyword">new</span> GameObject(instanceName);</span><br><span class="line">                            DontDestroyOnLoad(instanceGO);</span><br><span class="line">                            _instance = instanceGO.AddComponent&lt;T&gt;();</span><br><span class="line">                            DontDestroyOnLoad(_instance);</span><br><span class="line">                        }</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                        {</span><br><span class="line">                            <span class="comment">//场景中已存在同名游戏物体时就打印提示</span></span><br><span class="line">                            Debug.LogError(<span class="string">"场景中已存在单例:"</span> + instanceGO.name);</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">return</span> _instance;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">         <span class="function"><span class="keyword">void</span> <span class="title">OnDestroy</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        {</span><br><span class="line">            _instance = <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><strong>通过反射实现的单例</strong></p>
-<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Singleton&lt;T&gt; where T : Singleton&lt;T&gt; </span><br><span class="line">{ </span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> T mInstance = <span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Singleton</span>(<span class="params"></span>)</span> { }</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance </span><br><span class="line">    { </span><br><span class="line">        <span class="keyword">get</span> </span><br><span class="line">        { </span><br><span class="line">            <span class="keyword">if</span> (mInstance == <span class="literal">null</span>)</span><br><span class="line">            {</span><br><span class="line">                 <span class="keyword">var</span> ctors = <span class="keyword">typeof</span>(T).GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);  </span><br><span class="line">                <span class="keyword">var</span> ctor = Array.Find(ctors, c =&gt; c.GetParameters().Length == <span class="number">0</span>); </span><br><span class="line">                <span class="keyword">if</span> (ctor == <span class="literal">null</span>) </span><br><span class="line">                {</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Non-public ctor() not found!"</span>); </span><br><span class="line">                }</span><br><span class="line">                 mInstance = ctor.Invoke(<span class="literal">null</span>) <span class="keyword">as</span> T; }</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">return</span> mInstance;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1050,20 +1397,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

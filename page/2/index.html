@@ -77,9 +77,9 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="朝日" type="application/atom+xml">
 
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="朝日" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -160,6 +160,88 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/Design-Pattern-单例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zhaori">
+      <meta itemprop="description" content="笔记记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="朝日">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/13/Design-Pattern-单例/" class="post-title-link" itemprop="url">Design_Pattern_单例</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-13 19:48:30" itemprop="dateCreated datePublished" datetime="2019-08-13T19:48:30+08:00">2019-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h1><ul>
+<li>单例为最常见的一种设计模式，目前在用的主要有两种方式，一种是基于Unity的，一种是基于C#的</li>
+<li>一般来说，unity里的单例分为两种，一种是继承于Monobehaviour的，一种是不继承于它的；</li>
+<li>这里给出了两种实现方法</li>
+</ul>
+<p><strong>使用Unity里的方法</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ScriptSingleton&lt;T&gt;  : MonoBehaviour where T : ScriptSingleton&lt;T&gt;</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">protected</span> <span class="keyword">static</span> T _instance;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> T Instance</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">get</span></span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">if</span> (_instance == <span class="literal">null</span>)</span><br><span class="line">                {</span><br><span class="line">                    <span class="comment">//从场景中找T脚本的对象</span></span><br><span class="line">                    _instance = FindObjectOfType&lt;T&gt;();</span><br><span class="line">                    <span class="keyword">if</span> (FindObjectsOfType&lt;T&gt;().Length &gt; <span class="number">1</span>)</span><br><span class="line">                    {</span><br><span class="line">                        Debug.LogError(<span class="string">"场景中的单例脚本数量 &gt; 1:"</span> + _instance.GetType().ToString());</span><br><span class="line">                        <span class="keyword">return</span> _instance;</span><br><span class="line">                    }</span><br><span class="line">                    <span class="comment">//场景中找不到的情况</span></span><br><span class="line">                    <span class="keyword">if</span> (_instance == <span class="literal">null</span>)</span><br><span class="line">                    {</span><br><span class="line">                        <span class="keyword">string</span> instanceName = <span class="keyword">typeof</span>(T).Name;</span><br><span class="line">                        GameObject instanceGO = GameObject.Find(instanceName);</span><br><span class="line">                        <span class="keyword">if</span> (instanceGO == <span class="literal">null</span>)</span><br><span class="line">                        {</span><br><span class="line">                            instanceGO = <span class="keyword">new</span> GameObject(instanceName);</span><br><span class="line">                            DontDestroyOnLoad(instanceGO);</span><br><span class="line">                            _instance = instanceGO.AddComponent&lt;T&gt;();</span><br><span class="line">                            DontDestroyOnLoad(_instance);</span><br><span class="line">                        }</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                        {</span><br><span class="line">                            <span class="comment">//场景中已存在同名游戏物体时就打印提示</span></span><br><span class="line">                            Debug.LogError(<span class="string">"场景中已存在单例:"</span> + instanceGO.name);</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">return</span> _instance;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">         <span class="function"><span class="keyword">void</span> <span class="title">OnDestroy</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        {</span><br><span class="line">            _instance = <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>通过反射实现的单例</strong></p>
+<figure class="highlight csharp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Singleton&lt;T&gt; where T : Singleton&lt;T&gt; </span><br><span class="line">{ </span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> T mInstance = <span class="literal">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Singleton</span>(<span class="params"></span>)</span> { }</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> T Instance </span><br><span class="line">    { </span><br><span class="line">        <span class="keyword">get</span> </span><br><span class="line">        { </span><br><span class="line">            <span class="keyword">if</span> (mInstance == <span class="literal">null</span>)</span><br><span class="line">            {</span><br><span class="line">                 <span class="keyword">var</span> ctors = <span class="keyword">typeof</span>(T).GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic);  </span><br><span class="line">                <span class="keyword">var</span> ctor = Array.Find(ctors, c =&gt; c.GetParameters().Length == <span class="number">0</span>); </span><br><span class="line">                <span class="keyword">if</span> (ctor == <span class="literal">null</span>) </span><br><span class="line">                {</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Non-public ctor() not found!"</span>); </span><br><span class="line">                }</span><br><span class="line">                 mInstance = ctor.Invoke(<span class="literal">null</span>) <span class="keyword">as</span> T; }</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">return</span> mInstance;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -988,82 +1070,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/05/TODO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zhaori">
-      <meta itemprop="description" content="笔记记录">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="朝日">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/05/TODO/" class="post-title-link" itemprop="url">TODO</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-06-05 15:30:44" itemprop="dateCreated datePublished" datetime="2019-06-05T15:30:44+08:00">2019-06-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-17 23:32:30" itemprop="dateModified" datetime="2023-02-17T23:32:30+08:00">2023-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日常/" itemprop="url" rel="index"><span itemprop="name">日常</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>《C++必知必会》</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1133,20 +1139,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
