@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":"ture","style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":"ture","style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="笔记记录">
@@ -1127,7 +1127,7 @@ public class GUIStyleViewerUtil : EditorWindow
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-02 15:08:45" itemprop="dateModified" datetime="2023-03-02T15:08:45+08:00">2023-03-02</time>
+                <time title="Modified: 2023-03-02 16:45:05" itemprop="dateModified" datetime="2023-03-02T16:45:05+08:00">2023-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1165,13 +1165,13 @@ public class GUIStyleViewerUtil : EditorWindow
 <li><code>EffectData</code>列表 （技能包含的所有Effect）</li>
 <li><code>SkillAction</code>列表（技能动作）</li>
 </ul>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-2.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/image-2.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-2.png" target="_blank" rel="noopener"><img src="技能系统-主动技能/image-2.png" alt="img"></a></p>
 <p>上图配置是在范围内筛选出一个目标作为技能目标，在范围内可以释放技能，否则朝向目标移动。</p>
 <h3 id="SkillBlock"><a href="#SkillBlock" class="headerlink" title="SkillBlock"></a>SkillBlock</h3><ul>
 <li><code>**SkillBlockData** Data</code>；</li>
 <li><code>**List&lt;EffectData&gt;** effectDatas</code>;</li>
 </ul>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/SkillBlock.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/SkillBlock.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/SkillBlock.png" target="_blank" rel="noopener"><img src="技能系统-主动技能/SkillBlock.png" alt="img"></a></p>
 <p><code>SkillBlock</code>封装技能具体实现配置，一个完整的技能由多个<code>SkillBlock</code>数据组成，每个<code>SkillBlock</code>都是一个完整的技能表现。</p>
 <ul>
 <li>第一部分SkillBlock是技能中的索引配置，当前执行完之后跳转的索引。</li>
@@ -1189,7 +1189,7 @@ public class GUIStyleViewerUtil : EditorWindow
 <li>目标类型范围，用于筛选在范围内可被作为目标的角色。</li>
 </ul>
 <p><code>Effect</code>作为所有技能效果的基类，所有的技能效果都继承自<code>Effect</code>。</p>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-4.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/image-4.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-4.png" target="_blank" rel="noopener"><img src="技能系统-主动技能/image-4.png" alt="img"></a></p>
 <p>上图是改变相机镜头缩放的技能效果。</p>
 <p>除了Effect的基础功能外，Zoom效果实现了对相机FOV和，GroupFramingSize的改变，同时加入了淡入淡出和曲线的功能，实现了镜头缩放的效果。</p>
 <h2 id="SkillEntity实现细节"><a href="#SkillEntity实现细节" class="headerlink" title="SkillEntity实现细节"></a>SkillEntity实现细节</h2><h3 id="SkillBasicComponent"><a href="#SkillBasicComponent" class="headerlink" title="SkillBasicComponent"></a>SkillBasicComponent</h3><ul>
@@ -1221,14 +1221,14 @@ public class GUIStyleViewerUtil : EditorWindow
 <li>开关技记录一下技能开关状态做不同的逻辑处理</li>
 </ul>
 <h4 id="InterruptSkill"><a href="#InterruptSkill" class="headerlink" title="InterruptSkill"></a>InterruptSkill</h4><p>打断技能，具体可配SkillBlock在技能的某时间段可被某种行为打断，做一个技能的衔接，一个角色的技能是否流程打断技能配置很关键。</p>
-<p><img src="http://acgloby.com/wp-content/uploads/2021/11/%E6%89%93%E6%96%AD%E6%8A%80%E8%83%BD1.png" alt="img"></p>
+<p><img src="技能系统-主动技能/打断技能1.png" alt="img"></p>
 <p>上图配置中<code>TotalTime</code>当前技能的持续时间，<code>xxTime</code>表示三段打断时间，<code>xxInterrupt</code> 表示打断技能的行为类型</p>
 <p>移动打断，释放大招打断，普通攻击打断，使用技能打断等几种打断方式。</p>
 <h3 id="SkillConditionComponent"><a href="#SkillConditionComponent" class="headerlink" title="SkillConditionComponent"></a>SkillConditionComponent</h3><h4 id="SkillCondition"><a href="#SkillCondition" class="headerlink" title="SkillCondition"></a>SkillCondition</h4><p><code>SkillCondition</code>条件基类封装一些条件检测通用的字段方法，如：条件类型，检测区域类型，检测范围半径，目标类型等字段，返回符合条件的目标，是否达成条件等方法，编辑器用的配置需要有读写xml的接口。所有扩展的条件都继承自<code>SkillCondition</code>。</p>
 <p><code>SkillConditionComponent</code>主要职责是管理技能配置中所有<code>SkillCondition</code>，检测条件，对外提供检测结果的接口。传入条件id找到对应条件检测条件并返回结果。</p>
-<p><img src="http://acgloby.com/wp-content/uploads/2021/11/image.png" alt="img"></p>
+<p><img src="技能系统-主动技能/image.png" alt="img"></p>
 <p>上图为检测角色身上被动技的条件。</p>
-<p><img src="http://acgloby.com/wp-content/uploads/2021/11/image-6.png" alt="img"></p>
+<p><img src="技能系统-主动技能/image-6.png" alt="img"></p>
 <p>使用条件输入ConditionId，同时也实现了通过表达式来同时处理多个条件。</p>
 <p>与、或、非（&amp; | ！）</p>
 <p>[转载自][<a href="https://www.acgloby.com/技能系统程序设计思路-主动技能/]" target="_blank" rel="noopener">https://www.acgloby.com/技能系统程序设计思路-主动技能/]</a></p>
@@ -1282,7 +1282,7 @@ public class GUIStyleViewerUtil : EditorWindow
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-02 15:08:36" itemprop="dateModified" datetime="2023-03-02T15:08:36+08:00">2023-03-02</time>
+                <time title="Modified: 2023-03-02 16:44:00" itemprop="dateModified" datetime="2023-03-02T16:44:00+08:00">2023-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1305,17 +1305,17 @@ public class GUIStyleViewerUtil : EditorWindow
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="矩形范围检测"><a href="#矩形范围检测" class="headerlink" title="矩形范围检测"></a>矩形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/矩形.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/10/%E7%9F%A9%E5%BD%A2.png" alt="img"></a></p>
+          <h4 id="矩形范围检测"><a href="#矩形范围检测" class="headerlink" title="矩形范围检测"></a>矩形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/矩形.png" target="_blank" rel="noopener"><img src="技能系统-检测范围/矩形.png" alt="img"></a></p>
 <p>计算底边中点center，宽为2*range，长为length，朝向为q的矩形，是否与圆心为pos，半径为radius的圆有交点</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public bool IntersectsRectangle(Vector3 center, float length, float range, Quaternion q, Vector3 pos, float radius)</span><br><span class="line">{</span><br><span class="line">        Vector3 dis = pos - center;</span><br><span class="line">	Vector3 forward = q * Vector3.forward;</span><br><span class="line">	Vector3 right = q * Vector3.right;</span><br><span class="line">	var vd = Vector3.Dot(dis, forward.normalized);</span><br><span class="line">	var vl = Vector3.Dot(dis, right.normalized);</span><br><span class="line">	return vd &gt; -radius &amp;&amp; vd &lt; length + radius &amp;&amp; vl &gt; -radius - range &amp;&amp; vl &lt; radius + range;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>计算中心点为center，高为height1的圆（柱），是否与底边中点为dst，高为height2的矩形（体）相交–只考虑高度</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public bool IntersectsHeight(Vector3 center, float radius, Vector3 dst, float height1, float height2)</span><br><span class="line">{</span><br><span class="line">var h = center.y - dst.y;</span><br><span class="line">if(h &gt;= 1e-6f)</span><br><span class="line">{</span><br><span class="line">        return h &lt;= height1 + height2;</span><br><span class="line">}</span><br><span class="line">        return Mathf.Abs(h) &lt; height1;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="圆形范围检测"><a href="#圆形范围检测" class="headerlink" title="圆形范围检测"></a>圆形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/圆形.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/10/%E5%9C%86%E5%BD%A2.png" alt="img"></a></p>
+<h4 id="圆形范围检测"><a href="#圆形范围检测" class="headerlink" title="圆形范围检测"></a>圆形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/圆形.png" target="_blank" rel="noopener"><img src="技能系统-检测范围/圆形.png" alt="img"></a></p>
 <p>判断两个圆形中心点距离是否小于两个圆形半径和</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public bool IntersectsCircle(Vector3 center, Vector3 pos, float r1, float r2)</span><br><span class="line">{</span><br><span class="line">        var radius = r1 + r2;</span><br><span class="line">        Vector3 d = pos - center;</span><br><span class="line">        Vector2 v = new Vector2(d.x, d.z);</span><br><span class="line">        return v.sqrMagnitude &lt;= radius * radius;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="环形范围检测"><a href="#环形范围检测" class="headerlink" title="环形范围检测"></a>环形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/环形.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/10/%E7%8E%AF%E5%BD%A2.png" alt="img"></a></p>
+<h4 id="环形范围检测"><a href="#环形范围检测" class="headerlink" title="环形范围检测"></a>环形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/环形.png" target="_blank" rel="noopener"><img src="技能系统-检测范围/环形.png" alt="img"></a></p>
 <p>判断外圆形和目标中心点距离是否小于两个圆形半径和，并且大于内圆和目标距离半径和</p>
-<h4 id="扇形范围检测"><a href="#扇形范围检测" class="headerlink" title="扇形范围检测"></a>扇形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/扇形.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/10/%E6%89%87%E5%BD%A2.png" alt="img"></a></p>
+<h4 id="扇形范围检测"><a href="#扇形范围检测" class="headerlink" title="扇形范围检测"></a>扇形范围检测</h4><p><a href="http://acgloby.com/wp-content/uploads/2021/10/扇形.png" target="_blank" rel="noopener"><img src="技能系统-检测范围/扇形.png" alt="img"></a></p>
 <p>判断圆形和扇形是否相交在圆形检测的基础上计算施法者与目标之间的夹角是否在扇形二分之一角度内</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public bool IntersectsSector(Transform caster, Transform receiver, float angle, float radius)</span><br><span class="line">{</span><br><span class="line">	Vector3 deltaA = caster.position - receiver.position;</span><br><span class="line">	float tmpAngle = Mathf.Acos(Vector3.Dot(deltaA.normalized, caster.forward)) * Mathf.Rad2Deg;</span><br><span class="line">        return tmpAngle &lt; angle * 0.5f &amp;&amp; deltaA.magnitude &lt; radius;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><a href="https://www.acgloby.com/技能范围检测/" target="_blank" rel="noopener">转载自，侵删</a></p>
@@ -1369,7 +1369,7 @@ public class GUIStyleViewerUtil : EditorWindow
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-03-02 15:08:55" itemprop="dateModified" datetime="2023-03-02T15:08:55+08:00">2023-03-02</time>
+                <time title="Modified: 2023-03-02 16:45:26" itemprop="dateModified" datetime="2023-03-02T16:45:26+08:00">2023-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1398,12 +1398,12 @@ public class GUIStyleViewerUtil : EditorWindow
 <h3 id="被动技能触发器（事件系统）"><a href="#被动技能触发器（事件系统）" class="headerlink" title="被动技能触发器（事件系统）"></a>被动技能触发器（事件系统）</h3><p>被动技能选择触发条件，在Tick中检测触发器，满足时触发此被动技释放当被动技能触发的技能效果列表。</p>
 <p>触发条件注册对应的事件（PassiveSkillEventType）在对应的系统上发送事件来触发被动技，如：当释放技能时触发被动，参数有技能id或者技能类型， 在CastSkill()释放技能时Push该事件，被动技能实时监测收到的事件满足条件触发对应的技能效果。</p>
 <p>触发条件有生效次数、冷却时间来限制事件的触发。</p>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-17.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/image-17-1024x321.png" alt="img"></a></p>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-18.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/image-18.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-17.png" target="_blank" rel="noopener"><img src="被动技能-被动技能/image-17-1024x321.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-18.png" target="_blank" rel="noopener"><img src="被动技能-被动技能/image-18.png" alt="img"></a></p>
 <p>触发事件后释放被动技释放时的效果列表，如果没有添加事件对应加上该被动技就会触发该效果列表。</p>
 <h2 id="光环技能"><a href="#光环技能" class="headerlink" title="光环技能"></a>光环技能</h2><p>光环技能与被动技不用在于光环技能会检测在光环范围内的目标，进入光环的时候释放效果，离开光环的时候释放效果，被动技能主要用在触发时释放效果。</p>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-19.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/image-19.png" alt="img"></a></p>
-<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-20.png" target="_blank" rel="noopener"><img src="http://acgloby.com/wp-content/uploads/2021/11/image-20.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-19.png" target="_blank" rel="noopener"><img src="被动技能-被动技能/image-19.png" alt="img"></a></p>
+<p><a href="http://acgloby.com/wp-content/uploads/2021/11/image-20.png" target="_blank" rel="noopener"><img src="被动技能-被动技能/image-20.png" alt="img"></a></p>
 <p>如：光环目标类型是自己和伙伴，检测范围内的所有目标，筛选出符合目标的角色，放到一个列表内，进入光时添加一个无限时长buff，对应的离开光环时把这个buff驱散。</p>
 <p>未完待续…</p>
 <p>[转载自][<a href="https://www.acgloby.com/技能系统程序设计思路-被动技能/]" target="_blank" rel="noopener">https://www.acgloby.com/技能系统程序设计思路-被动技能/]</a></p>
