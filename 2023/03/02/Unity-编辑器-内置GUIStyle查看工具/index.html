@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="记录一些常用的 Build-In 到 HLSL 的函数光照模式   Bulid - In URP     ForwardBase UniversalForward   ForwardAdd 开启关键字 _ADDTIONAL_LIGHTS   ShadowCaster ShadowCaster">
-<meta name="keywords" content="Unity Shader HLSL">
+  <meta name="description" content="using UnityEngine; using UnityEditor; using System.Reflection;  /// &amp;lt;summary&amp;gt; /// Unity 自带的 GUIStyle 效果查看器 /// &amp;lt;/summary&amp;gt; public class GUIStyleViewerUtil : EditorWindow {     /// &amp;lt;summa">
+<meta name="keywords" content="Unity Editor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity Shader Build-In To HLSL">
-<meta property="og:url" content="http://yoursite.com/2023/02/25/Unity-Shader-Build-In-To-HLSL/index.html">
+<meta property="og:title" content="Unity 编辑器-内置GUIStyle查看工具">
+<meta property="og:url" content="http://yoursite.com/2023/03/02/Unity-编辑器-内置GUIStyle查看工具/index.html">
 <meta property="og:site_name" content="朝日">
-<meta property="og:description" content="记录一些常用的 Build-In 到 HLSL 的函数光照模式   Bulid - In URP     ForwardBase UniversalForward   ForwardAdd 开启关键字 _ADDTIONAL_LIGHTS   ShadowCaster ShadowCaster">
+<meta property="og:description" content="using UnityEngine; using UnityEditor; using System.Reflection;  /// &amp;lt;summary&amp;gt; /// Unity 自带的 GUIStyle 效果查看器 /// &amp;lt;/summary&amp;gt; public class GUIStyleViewerUtil : EditorWindow {     /// &amp;lt;summa">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2023-02-27T06:29:42.090Z">
+<meta property="og:updated_time" content="2023-03-02T06:54:49.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unity Shader Build-In To HLSL">
-<meta name="twitter:description" content="记录一些常用的 Build-In 到 HLSL 的函数光照模式   Bulid - In URP     ForwardBase UniversalForward   ForwardAdd 开启关键字 _ADDTIONAL_LIGHTS   ShadowCaster ShadowCaster">
+<meta name="twitter:title" content="Unity 编辑器-内置GUIStyle查看工具">
+<meta name="twitter:description" content="using UnityEngine; using UnityEditor; using System.Reflection;  /// &amp;lt;summary&amp;gt; /// Unity 自带的 GUIStyle 效果查看器 /// &amp;lt;/summary&amp;gt; public class GUIStyleViewerUtil : EditorWindow {     /// &amp;lt;summa">
 
-<link rel="canonical" href="http://yoursite.com/2023/02/25/Unity-Shader-Build-In-To-HLSL/">
+<link rel="canonical" href="http://yoursite.com/2023/03/02/Unity-编辑器-内置GUIStyle查看工具/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Unity Shader Build-In To HLSL | 朝日</title>
+  <title>Unity 编辑器-内置GUIStyle查看工具 | 朝日</title>
   
 
 
@@ -167,7 +167,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/02/25/Unity-Shader-Build-In-To-HLSL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/02/Unity-编辑器-内置GUIStyle查看工具/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Unity Shader Build-In To HLSL
+          Unity 编辑器-内置GUIStyle查看工具
         </h1>
 
         <div class="post-meta">
@@ -189,16 +189,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2023-02-25 21:25:25" itemprop="dateCreated datePublished" datetime="2023-02-25T21:25:25+08:00">2023-02-25</time>
+              <time title="Created: 2023-03-02 14:52:10 / Modified: 14:54:49" itemprop="dateCreated datePublished" datetime="2023-03-02T14:52:10+08:00">2023-03-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-02-27 14:29:42" itemprop="dateModified" datetime="2023-02-27T14:29:42+08:00">2023-02-27</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -220,29 +214,191 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="记录一些常用的-Build-In-到-HLSL-的函数"><a href="#记录一些常用的-Build-In-到-HLSL-的函数" class="headerlink" title="记录一些常用的 Build-In 到 HLSL 的函数"></a>记录一些常用的 Build-In 到 HLSL 的函数</h3><h6 id="光照模式"><a href="#光照模式" class="headerlink" title="光照模式"></a>光照模式</h6><table>
-<thead>
-<tr>
-<th style="text-align:left">Bulid - In</th>
-<th>URP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">ForwardBase</td>
-<td>UniversalForward</td>
-</tr>
-<tr>
-<td style="text-align:left">ForwardAdd</td>
-<td>开启关键字 _ADDTIONAL_LIGHTS</td>
-</tr>
-<tr>
-<td style="text-align:left">ShadowCaster</td>
-<td>ShadowCaster</td>
-</tr>
-</tbody>
-</table>
+        <pre><code>using UnityEngine;
+using UnityEditor;
+using System.Reflection;
 
+/// &lt;summary&gt;
+/// Unity 自带的 GUIStyle 效果查看器
+/// &lt;/summary&gt;
+public class GUIStyleViewerUtil : EditorWindow
+{
+    /// &lt;summary&gt;
+    /// 滑动条
+    /// &lt;/summary&gt;
+    private Vector2 mScrollView = Vector2.zero;
+    /// &lt;summary&gt;
+    /// 寻找的样式名称
+    /// &lt;/summary&gt;
+    private string mSearchStyle = "";
+    /// &lt;summary&gt;
+    /// 样式缓存
+    /// &lt;/summary&gt;
+    private static GUIStyle mBtnStyle;
+  [MenuItem("Util/GUIStyle 效果查看器")]
+  private static void MenuClicked()
+  {
+      GetWindow&lt;GUIStyleViewerUtil&gt;("GUIStyle查看器", true);
+      // 初始化一个按钮的样式
+      mBtnStyle = GetBtnStyle();
+  }
+
+  private void OnGUI()
+  {
+      GUILayout.Space(20);
+
+      // 设置一个查找的功能
+      GUILayout.BeginHorizontal("HelpBox");
+      GUILayout.Space(20);
+      mSearchStyle = EditorGUILayout.TextField("", mSearchStyle, "SearchTextField");
+      GUILayout.Label("", "SearchCancelButtonEmpty");
+      GUILayout.EndHorizontal();
+
+      // 设置滚动栏
+      mScrollView = GUILayout.BeginScrollView(mScrollView);
+      // 遍历并显示所有符合条件的 Unity 自带的 GUIStyle
+      foreach (GUIStyle style in GUI.skin.customStyles)
+      {
+          if (style.name.ToLower().Contains(mSearchStyle.ToLower()))
+          {
+              GUILayout.Space(10);
+              // 为了让显示的布局看着更舒服一些，需要以当前 style 为原型新建一个 GUIStyle
+              // 因为接下来可能会对文字居中等方面进行调整，
+              // 而如果直接更改原来的 style，则会导致系统中的对应 UI 样式和布局也发生改变
+              GUIStyle tmp = new GUIStyle(style);
+              DrawStyleItem(tmp);
+          }
+      }
+      GUILayout.EndScrollView();
+  }
+
+  /// &lt;summary&gt;
+  /// 绘制对应的 GUIStyle
+  /// &lt;/summary&gt;
+  /// &lt;param name="style"&gt;&lt;/param&gt;
+  private void DrawStyleItem(GUIStyle style)
+  {
+
+      GUILayout.BeginHorizontal("box", GUILayout.Height(style.fixedHeight));
+      GUILayout.Space(20);
+      // 获取按钮样式
+      GUIStyle tmp = mBtnStyle;
+
+      // 设置第一个按钮，点击后可以复制当前 GUIStyle 的名字信息
+      if (GUILayout.Button("&lt;color=#000000FF&gt;复制到剪贴板&lt;/color&gt;", tmp))
+      {
+          GUIUtility.systemCopyBuffer = style.name;
+      }
+
+      GUILayout.Space(20);
+
+      // 设置第二个按钮，点击后在控制台输出该 GUIStyle 的设置参数
+      if (GUILayout.Button("&lt;color=#FFFFFFFF&gt;查看Style参数&lt;/color&gt;", tmp))
+      {
+          ShowGUIStyleMsg(style.name);
+      }
+      GUILayout.Space(30);
+
+      // 显示当前 GUIStyle 的名字
+      EditorGUILayout.SelectableLabel(style.name);
+
+      // 设置左右对称布局，以此为分界线，把前后的布局对称
+      GUILayout.FlexibleSpace();
+
+      // 设置文本居中显示
+      style.alignment = TextAnchor.MiddleCenter;
+      // 显示当前的样式及其名称
+      EditorGUILayout.SelectableLabel(style.name, style);
+
+      GUILayout.Space(100);
+
+      // 单独显示样式
+      EditorGUILayout.SelectableLabel("", style,
+                                      GUILayout.Height(style.fixedHeight),
+                                       GUILayout.Width(style.fixedWidth));
+      GUILayout.Space(100);
+
+      GUILayout.EndHorizontal();
+  }
+
+  /// &lt;summary&gt;
+  /// 创建一个按钮样式，用来作为本界面中的按钮基础
+  /// &lt;/summary&gt;
+  /// &lt;returns&gt;&lt;/returns&gt;
+  public static GUIStyle GetBtnStyle()
+  {
+      // 使用系统自带的 "AC Button" 样式作为原型，因为 "AC Button" 本身就具有点击效果了
+      GUIStyle style = new GUIStyle("AC Button");
+
+      // 将样式的点击时的效果图，替换为系统自带的 "flow node 4 on" 样式
+      GUIStyle active = new GUIStyle("flow node 4 on");
+      style.active.background = active.normal.background;
+
+      // 将平时按钮的效果图，替换为系统自带的 "flow node 4" 样式
+      GUIStyle normal = new GUIStyle("flow node 4");
+      style.normal.background = normal.normal.background;
+
+      // 参考 "flow node 4" 的内部参数，设置一些图片的参数。
+      // 如果不设置的话，则图片会按照原 "AC Button" 的样式进行显示
+      // 因为图片不一样，所以会有显示上的问题。
+      style.stretchHeight = true;
+      style.stretchWidth = true;
+      style.border = new RectOffset(11, 11, 11, 15);
+      style.margin = new RectOffset(0, 0, 0, 0);
+      style.padding = new RectOffset(0, 0, 0, 0);
+      style.overflow = new RectOffset(7, 7, 6, 9);
+
+      // 进行文本方面的设置
+      style.alignment = TextAnchor.MiddleCenter;
+      style.fontSize = 18;
+      style.richText = true;
+
+      return style;
+  }
+
+  /// &lt;summary&gt;
+  /// 展示指定的 GUI 样式的一些数值
+  /// &lt;/summary&gt;
+  /// &lt;param name="style"&gt;&lt;/param&gt;
+  public void ShowGUIStyleMsg(string style)
+  {
+      // 清空控制台信息，防止混淆
+      ClearConsole();
+
+      GUIStyle tmp = new GUIStyle(style);
+      Debug.Log("Style Name: " + tmp.name);
+      Debug.Log("Style Normal: " + tmp.normal.background);
+      Debug.Log("Style Normal Color: " + tmp.normal.textColor);
+      Debug.Log("Style Active: " + tmp.active.background);
+      Debug.Log("Style Active Color: " + tmp.active.textColor);
+      Debug.Log("Style Hover: " + tmp.hover.background);
+      Debug.Log("Style Hover Color: " + tmp.hover.textColor);
+      Debug.Log("Style Focused: " + tmp.focused.background);
+      Debug.Log("Style Focused Color: " + tmp.focused.textColor);
+      Debug.Log("Style border: " + tmp.border);
+      Debug.Log("Style margin: " + tmp.margin);
+      Debug.Log("Style padding: " + tmp.padding);
+      Debug.Log("Style overflow: " + tmp.overflow);
+      Debug.Log("Style fixedWidth: " + tmp.fixedWidth);
+      Debug.Log("Style fixedHeight: " + tmp.fixedHeight);
+      Debug.Log("Style stretchWidth: " + tmp.stretchWidth);
+      Debug.Log("Style stretchHeight: " + tmp.stretchHeight);
+      Debug.Log("Style lineHeight: " + tmp.lineHeight);
+      Debug.Log("Style Font: " + tmp.font);
+      Debug.Log("Style Font Size: " + tmp.fontSize);
+  }
+
+  public void ClearConsole()
+  {
+      Assembly assembly = Assembly.GetAssembly(typeof(SceneView));
+
+      System.Type type = assembly.GetType("UnityEditor.LogEntries");
+      MethodInfo method = type.GetMethod("Clear");
+      method.Invoke(new object(), null);
+
+  }
+}
+</code></pre>
     </div>
 
     
@@ -251,7 +407,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Unity-Shader-HLSL/" rel="tag"># Unity Shader HLSL</a>
+              <a href="/tags/Unity-Editor/" rel="tag"># Unity Editor</a>
           </div>
 
         
@@ -260,13 +416,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/01/14/使用手册/" rel="prev" title="使用手册">
-      <i class="fa fa-chevron-left"></i> 使用手册
+    <a href="/2023/03/02/宝藏网站（持续更新）/" rel="prev" title="宝藏网站（持续更新）">
+      <i class="fa fa-chevron-left"></i> 宝藏网站（持续更新）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/03/02/记录一些HLSL常用函数/" rel="next" title="记录一些HLSL常用函数">
-      记录一些HLSL常用函数 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -325,7 +478,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录一些常用的-Build-In-到-HLSL-的函数"><span class="nav-number">1.</span> <span class="nav-text">记录一些常用的 Build-In 到 HLSL 的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#光照模式"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">光照模式</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
