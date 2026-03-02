@@ -35,6 +35,10 @@ jobs:
           npx hexo clean
           npx hexo generate
 
+      - name: Guard: ensure generated files are non-empty
+        run: |
+          test -s public/index.html
+
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
