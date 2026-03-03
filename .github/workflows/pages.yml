@@ -2,8 +2,7 @@ name: Deploy Hexo to gh-pages
 
 on:
   push:
-    branches:
-      - hexo
+    branches: [hexo]
   workflow_dispatch:
 
 permissions:
@@ -17,32 +16,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: hexo
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          # Hexo 3.x stack in this repo produces zero-byte output on modern Node.
-          # Pin an old Node to keep Pages deploy working.
-          node-version: 12.22.12
+          node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - run: npm install
+      - run: npx hexo clean && npx hexo generate
 
-      - name: Build
-        run: |
-          npx hexo clean
-          npx hexo generate
+      - run: test -s public/index.html
 
-      - name: Guard: ensure generated files are non-empty
-        run: |
-          test -s public/index.html
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
