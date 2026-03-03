@@ -25,10 +25,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Hexo 3.x stack in this repo produces zero-byte output on modern Node.
+          # Pin an old Node to keep Pages deploy working.
+          node-version: 12.22.12
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: |
