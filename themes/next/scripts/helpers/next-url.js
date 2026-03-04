@@ -66,5 +66,6 @@ hexo.extend.helper.register('next_url', function(path, text, options) {
     }
   }
 
-  return htmlTag(tag, attrs, text);
+  // Keep legacy NexT behavior: menu labels may contain trusted HTML snippets (icon + <br/>).
+  return htmlTag(tag, attrs, text, false);
 });
