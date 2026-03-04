@@ -1,156 +1,198 @@
-<div align="right">语言: <a title="英语" href="../../README.md">:us:</a>
-:cn:
-<a title="俄语" href="../../docs/ru/README.md">:ru:</a></div>
+<div align="right">
+  语言:
+  <a title="英语" href="../../README.md">🇺🇸</a>
+  🇨🇳
+  <a title="俄语" href="../ru/README.md">🇷🇺</a>
+</div>
 
-# <div align="center"><a title="NexT website repository" href="https://github.com/theme-next/theme-next.org"><img align="center" width="56" height="56" src="https://raw.githubusercontent.com/theme-next/hexo-theme-next/master/source/images/logo.svg?sanitize=true"></a> e x T</div>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/next-theme/theme-next-docs/v8.13.0/source/images/next-schemes-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/next-theme/theme-next-docs/v8.13.0/source/images/next-schemes.png">
+  <img alt="NexT preview" src="https://raw.githubusercontent.com/next-theme/theme-next-docs/v8.13.0/source/images/next-schemes.png">
+</picture>
 
-<p align="center">«NexT» 是一款风格优雅的高质量 <a href="http://hexo.io">Hexo</a> 主题，自点点滴滴中用爱雕琢而成。</p>
+<a title="NexT 网站" href="https://theme-next.js.org"><img align="right" alt="NexT logo" width="100" height="100" src="https://raw.githubusercontent.com/next-theme/hexo-theme-next/master/source/images/logo.svg"></a>
 
-<p align="center">
-  <a href="https://bestpractices.coreinfrastructure.org/projects/2625"><img src="https://bestpractices.coreinfrastructure.org/projects/2625/badge" title="Core Infrastructure Initiative Best Practices"></a>
-  <a href="https://www.codacy.com/app/theme-next/hexo-theme-next?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=theme-next/hexo-theme-next&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/72f7fe7609c2438a92069f448e5a341a" title="Project Grade"></a>
-  <a href="https://travis-ci.org/theme-next/hexo-theme-next?branch=master"><img src="https://travis-ci.org/theme-next/hexo-theme-next.svg?branch=master" title="Travis CI [Linux]"></a>
-  <a href="https://crwd.in/theme-next"><img src="https://d322cqt584bo4o.cloudfront.net/theme-next/localized.svg" title="请花几秒钟来添加或修正翻译！"></a>
-  <a href="https://github.com/theme-next/hexo-theme-next/releases"><img src="https://badge.fury.io/gh/theme-next%2Fhexo-theme-next.svg"></a>
-  <a href="http://hexo.io"><img src="https://img.shields.io/badge/hexo-%3E%3D%203.5.0-blue.svg"></a>
-  <a href="https://github.com/theme-next/hexo-theme-next/blob/master/LICENSE.md"><img src="https://img.shields.io/badge/license-%20AGPL-blue.svg"></a>
-</p>
+# NexT
+
+> NexT 是一款风格优雅的高质量 [Hexo](https://hexo.io) 主题，自点点滴滴中用爱雕琢而成。
+
+[![NPM version](https://img.shields.io/npm/v/hexo-theme-next?color=red&logo=npm&style=for-the-badge)](https://www.npmjs.com/package/hexo-theme-next)
+[![NPM Downloads](https://img.shields.io/npm/dm/hexo-theme-next?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/hexo-theme-next)
+[![Required Hexo version](https://img.shields.io/badge/hexo-%3E=7.0.0-blue?style=for-the-badge&logo=hexo)](https://hexo.io)
+[![License](https://img.shields.io/badge/license-%20AGPL-orange?style=for-the-badge&logo=gnu)](https://github.com/next-theme/hexo-theme-next/blob/master/LICENSE.md)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/next-theme/hexo-theme-next/linter.yml?branch=master&label=test&logo=github&style=for-the-badge)](https://github.com/next-theme/hexo-theme-next/actions?query=workflow%3ALinter)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/next-theme/hexo-theme-next/tester.yml?branch=master&logo=github&style=for-the-badge)](https://github.com/next-theme/hexo-theme-next/actions?query=workflow%3ATester)
+[![Coverage Status](https://img.shields.io/coveralls/github/next-theme/hexo-theme-next?logo=coveralls&style=for-the-badge)](https://coveralls.io/github/next-theme/hexo-theme-next)
 
 ## 即时预览
 
-* :heart_decoration: Muse 主题: [LEAFERx](https://leaferx.online) | [Alex LEE](http://saili.science) | [Miaia](https://11.tt)
-* :six_pointed_star: Mist 主题: [uchuhimo](http://uchuhimo.me) | [xirong](http://www.ixirong.com)
-* :pisces: Pisces 主题: [Vi](http://notes.iissnan.com) | [Acris](https://acris.me) | [Jiaxi He](http://jiaxi.io)
-* :gemini: Gemini 主题: [Ivan.Nginx](https://almostover.ru) | [Raincal](https://raincal.com) | [Dandy](https://dandyxu.me)
-
-更多 «NexT» 的例子参见[这里](https://github.com/iissnan/hexo-theme-next/issues/119)。
+<p align="center">
+  💟 <a href="https://theme-next.js.org/muse/">Muse</a> | 🔯 <a href="https://theme-next.js.org/mist/">Mist</a> | ♓️ <a href="https://theme-next.js.org/pisces/">Pisces</a> | ♊️ <a href="https://theme-next.js.org">Gemini</a>
+<br>
+<br>
+  更多 NexT 的例子参见<a href="https://github.com/next-theme/awesome-next#live-preview">这里</a>。
+</p>
 
 ## 安装
 
-最简单的安装方式是直接克隆整个仓库：
+如果你在使用 Hexo 5.0 或更新版本，最简单的安装方式是通过 npm：
 
-   ```sh
-   $ cd hexo
-   $ git clone https://github.com/theme-next/hexo-theme-next themes/next
-   ```
+```sh
+cd hexo-site
+npm install hexo-theme-next
+```
 
-此外，如果你想要使用其他方式，你也可以参见[详细安装步骤][docs-installation-url]。
+你也可以直接克隆整个仓库：
+
+```sh
+cd hexo-site
+git clone https://github.com/next-theme/hexo-theme-next themes/next
+```
+
+此外，如果你想要使用其他方式，请参见[详细安装步骤][docs-installation-url]。
+
+安装完成后，在 Hexo 配置文件中将 `theme` 设置为 `next`。
+
+```yml
+theme: next
+```
+
+## 配置
+
+我们不推荐直接修改 NexT 主题的文件。因为这可能导致错误（例如 git merge 冲突），并且在升级主题时修改的文件可能丢失。
+
+目前 NexT 鼓励用户使用 [Alternate Theme Config][docs-configuration-url] 进行配置。并且可以轻松地通过 [Custom Files][docs-custom-files-url] 自定义主题的布局和样式。
 
 ## 插件
 
-在 NexT 配置中你现在可以找到已经被移至外部仓库的依赖项。你可以在[组织主页](https://github.com/theme-next)中找到它们。
+插件丰富和拓展了 NexT 的功能。一些高级功能需要第三方依赖库和额外配置，使你能够灵活地创建一个完全自定义的网站。
 
-例如，假设你想要在你的站点中使用 `fancybox` 插件，请进入 NexT 配置文件，你会看到如下内容：
+配置这些插件非常简单。例如，你想要在你的站点中使用 `pjax` 插件，请进入 NexT 配置文件，启用 `pjax` 配置项：
 
 ```yml
-# Fancybox
-# Dependencies: https://github.com/theme-next/theme-next-fancybox
-fancybox: false
+# Easily enable fast Ajax navigation on your website.
+# For more information: https://github.com/next-theme/pjax
+pjax: true
 ```
 
-将 `fancybox` 配置项打开，进入它上面的 «Dependencies» 链接以查看它的安装步骤。
+### 设置 CDN
 
-### 例外
+第三方插件默认通过 [CDNJS](https://cdnjs.com) CDN 服务加载。我们也提供了其它的 CDN 服务供选择，包括著名的 [UNPKG](https://unpkg.com) 和 [jsDelivr](https://www.jsdelivr.com)。
 
-如果你使用的插件脚本依赖 CDN，那么需要替换你的 CDN 链接：
-
-例如，假如你使用了 `fancybox` 插件并且配置了 CDN 加载链接，进入 Next 配置文件，你会看到如下内容：
+例如，你想要使用 `unpkg` 代替 `cdnjs` 作为默认的 CDN 提供商，你需要在 NexT 配置文件中进行如下设置：
 
 ```yml
 vendors:
   # ...
   # Some contents...
   # ...
-  fancybox: # Set or update fancybox cdn url.
-  fancybox_css: # Set or update fancybox cdn url.
+  plugins: unpkg
 ```
-
-通过替换 CDN 链接来替换 [插件列表](https://github.com/theme-next) 项目来升级。
 
 ## 更新
 
-你可以通过如下命令更新到最新的 master 分支：
+NexT 会不断发布新版本以包含新功能和问题修复。请在更新前阅读[更新说明][docs-release-url]。你可以通过如下命令更新 NexT。
+
+通过 npm 安装最新版本：
 
 ```sh
-$ cd themes/next
-$ git pull
+cd hexo-site
+npm install hexo-theme-next@latest
 ```
 
-如果你在此过程中收到了任何错误报告 (例如 **«Commit your changes or stash them before you can merge»**)，我们推荐你使用 [Hexo 数据文件][docs-data-files-url]特性。\
-然而你也可以通过提交（`Commit`）、贮藏（`Stash`）或忽视（`Discard`）本地更改以绕过这种更新错误。具体方法请参考[这里](https://stackoverflow.com/a/15745424/5861495)。
+或者通过 git 更新到最新的 master 分支：
 
-**如果你想要从 v5.1.x 更新到 v6.0.x，阅读[这篇文档][docs-update-5-1-x-url]。**
+```sh
+cd themes/next
+git pull
+```
 
-## 已知问题
+**如果你想要从 v5.x / v7.x 更新到最新版本，阅读[这篇文档][docs-upgrade-url]。**
 
-对于仍然遇到 **«[Error: Cannot find module 'hexo-util'](https://github.com/iissnan/hexo-theme-next/issues/1490)»** 这一错误的用户，请检查你的 NPM 版本。
+## 社区
 
-* `> 3`：仍然出现错误吗？请删除 `node_modules` 目录并通过 `npm install` 重新安装。
-* `< 3`：请通过 `npm install --save-dev hexo-util` 将 `hexo-util` 依赖手动添加至你的站点依赖包中。
+与我们联系并成为我们日益壮大的社区的一部分！
 
-## 贡献你的代码
-
-我们欢迎你贡献出你的一份力量，你可以随时提交 issue 或 fork 本仓库。静候你的 pull request。
+* **Telegram 群组（中文）**：[点击此处加入！](https://t.me/theme_next_cn)
+* **Discord 服务器**：[加入我们的 Discord！](https://discord.gg/qmkgkY3jaG)
+* **Gitter**：[加入我们的 Gitter 聊天！]
+* **ChatGPT**: [NexT Mentor][gpt-url]
 
 ## 反馈
 
-* 在 [Stack Overflow][stack-url] 上提问。
+* 浏览 [Awesome NexT][awesome-next-url] 列表，与其它用户分享插件和教程。
+* 加入我们的 [GitHub discussions][discussions-url]。
+* 请花几秒钟来[添加或修正翻译][i18n-url]。
 * 在 [GitHub Issues][issues-bug-url] 报告Bug。
 * 在 [GitHub][issues-feat-url] 请求新的功能。
-* 为 [popular feature requests][feat-req-vote-url] 投票。
-* 加入我们的 [Gitter][gitter-url] / [Riot][riot-url] / [Telegram][t-chat-url] 聊天。
-* 关注我们的 [Telegram Channel][t-news-url] 以获取最新消息。
+* 为 [受欢迎的 Feature request][feat-req-vote-url] 投票。
 
-## 第三方应用程序
+## 贡献你的代码
 
-* :triangular_flag_on_post: <a title="Hexo Markdown 编辑器" href="https://github.com/zhuzhuyule/HexoEditor" target="_blank">HexoEditor</a>
+我们欢迎你加入 NexT 的开发，贡献出你的一份力量。请看[开源贡献指南][contributing-document-url]。 🤗
+
+你也可以随时向我们的[官方插件][official-plugins-url]提交 Issue 或 Pull Request。
+
+## 贡献者
+
+[![Contributors][contributors-image]][contributors-url]
 
 ## 鸣谢
 
-<p align="center">
-«NexT» 特别感谢这些支持我们核心基础设施的优质服务：
-</p>
+NexT 特别感谢这些支持我们核心基础设施的优质服务：
 
-<p align="center"><a href="https://github.com"><img align="center" width="100" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png"></a>
-&nbsp;<a href="https://www.netlify.com"><img align="center" width="150" src="https://cdn.netlify.com/15ecf59b59c9d04b88097c6b5d2c7e8a7d1302d0/1b6d6/img/press/logos/full-logo-light.svg"></a></p>
-<p align="center">
-  <sub>GitHub 容许我们托管 Git 仓库，Netlify 容许我们分发文档。</sub>
-</p>
+<a href="https://github.com"><img height="40" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png"></a>
 
-<p align="center"><a href="https://crowdin.com"><img align="center" width="180" src="https://support.crowdin.com/assets/logos/crowdin-logo1-small.png"></a></p>
-<p align="center">
-  <sub>Crowdin 容许我们方便地翻译文档。</sub>
-</p>
+> GitHub 容许我们托管 Git 仓库及运行测试。
 
-<p align="center"><a href="https://codacy.com"><img align="center" width="155" src="https://user-images.githubusercontent.com/16944225/55026017-623f8f00-5002-11e9-88bf-0d6a5884c6c2.png"></a>
-&nbsp;<a href="https://www.browserstack.com"><img align="center" width="140" src="https://www.browserstack.com/images/mail/browserstack-logo-footer.png"></a></p>
-<p align="center">
-  <sub>Codacy 容许我们运行测试套件，BrowserStack 容许我们在真实的浏览器中进行测试。</sub>
-</p>
+<a href="https://www.netlify.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" height="40" srcset="https://www.netlify.com/v3/img/components/full-logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" height="40" srcset="https://www.netlify.com/v3/img/components/full-logo-light.svg">
+    <img alt="Netlify Logo" height="40" src="https://www.netlify.com/v3/img/components/full-logo-light.svg">
+  </picture>
+</a>
 
-[browser-image]: https://img.shields.io/badge/browser-%20chrome%20%7C%20firefox%20%7C%20opera%20%7C%20safari%20%7C%20ie%20%3E%3D%209-lightgrey.svg
-[browser-url]: https://www.browserstack.com
+> Netlify 容许我们发布文档。
 
-[stack-url]: https://stackoverflow.com/questions/tagged/theme-next
-[issues-bug-url]: https://github.com/theme-next/hexo-theme-next/issues/new?assignees=&labels=Bug&template=bug-report.md
-[issues-feat-url]: https://github.com/theme-next/hexo-theme-next/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
-[feat-req-vote-url]: https://github.com/theme-next/hexo-theme-next/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22+sort%3Areactions-%2B1-desc
+<a href="https://crowdin.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" height="40" srcset="https://support.crowdin.com/assets/logos/core-logo/svg/crowdin-core-logo-cWhite.svg">
+    <source media="(prefers-color-scheme: light)" height="40" srcset="https://support.crowdin.com/assets/logos/core-logo/svg/crowdin-core-logo-cDark.svg">
+    <img alt="Netlify Logo" height="40" src="https://support.crowdin.com/assets/logos/core-logo/svg/crowdin-core-logo-cDark.svg">
+  </picture>
+</a>
 
-[gitter-url]: https://gitter.im/theme-next
-[riot-url]: https://riot.im/app/#/room/#theme-next:matrix.org
-[t-chat-url]: https://t.me/theme_next_chinese
-[t-news-url]: https://t.me/theme_next_news
+> Crowdin 容许我们方便地翻译文档。
 
-<!--[rel-image]: https://img.shields.io/github/release/theme-next/hexo-theme-next.svg-->
-<!--[rel-image]: https://badge.fury.io/gh/theme-next%2Fhexo-theme-next.svg-->
-<!--[mnt-image]: https://img.shields.io/maintenance/yes/2018.svg-->
+<a href="https://cdnjs.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" height="40" srcset="https://raw.githubusercontent.com/cdnjs/brand/master/logo/source/light-brackets.svg">
+    <source media="(prefers-color-scheme: light)" height="40" srcset="https://raw.githubusercontent.com/cdnjs/brand/master/logo/source/dark-brackets.svg">
+    <img alt="CDNJS Logo" height="40" src="https://raw.githubusercontent.com/cdnjs/brand/master/logo/source/dark-brackets.svg">
+  </picture>
+</a>
 
-[download-latest-url]: https://github.com/theme-next/hexo-theme-next/archive/master.zip
-[releases-latest-url]: https://github.com/theme-next/hexo-theme-next/releases/latest
-<!--[releases-url]: https://github.com/theme-next/hexo-theme-next/releases-->
-[tags-url]: https://github.com/theme-next/hexo-theme-next/tags
-[commits-url]: https://github.com/theme-next/hexo-theme-next/commits/master
+> 感谢 CDNJS 提供的 CDN 服务。
 
-[docs-installation-url]: https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/INSTALLATION.md
-[docs-data-files-url]: https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/DATA-FILES.md
-[docs-update-5-1-x-url]: https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/UPDATE-FROM-5.1.X.md
+[docs-installation-url]: https://theme-next.js.org/docs/getting-started/installation.html
+[docs-configuration-url]: https://theme-next.js.org/docs/getting-started/configuration.html
+[docs-custom-files-url]: https://theme-next.js.org/docs/advanced-settings/custom-files.html
+[docs-release-url]: https://github.com/next-theme/hexo-theme-next/releases
+[docs-upgrade-url]: https://theme-next.js.org/docs/getting-started/upgrade.html
+
+[awesome-next-url]: https://github.com/next-theme/awesome-next
+[discussions-url]: https://github.com/next-theme/hexo-theme-next/discussions
+[gitter-url]: https://app.gitter.im/#/room/#next:gitter.im
+[gpt-url]: https://chatgpt.com/g/g-68286c2fc1f48191aee3e87c94a89431-next-mentor
+[i18n-url]: https://crowdin.com/project/hexo-theme-next
+
+[issues-bug-url]: https://github.com/next-theme/hexo-theme-next/issues/new?assignees=&labels=Bug&template=bug-report.md
+[issues-feat-url]: https://github.com/next-theme/hexo-theme-next/issues/new?assignees=&labels=Feature+Request&template=feature-request.md
+[feat-req-vote-url]: https://github.com/next-theme/hexo-theme-next/issues?q=is%3Aopen+is%3Aissue+label%3A%22Feature+Request%22
+
+[contributing-document-url]: https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/CONTRIBUTING.md
+[official-plugins-url]: https://github.com/next-theme
+[contributors-image]: https://raw.githubusercontent.com/next-theme/contributors/master/contributors.svg
+[contributors-url]: https://github.com/next-theme/hexo-theme-next/blob/master/docs/AUTHORS.md

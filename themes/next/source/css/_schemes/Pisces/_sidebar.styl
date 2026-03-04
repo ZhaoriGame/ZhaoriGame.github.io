@@ -1,121 +1,88 @@
-.use-motion .sidebar .motion-element { opacity: 1; }
-
-.sidebar {
-  right: auto;
-  bottom: auto;
-
-  // Do NOT delete this line
-  // or Affix (position: fixed) will not work in Google Chrome.
-  -webkit-transform: none;
-
-  a, span.exturl {
-    color: $black-light;
-
-    &:hover {
-      color: $black-deep;
-      border-bottom-color: $black-deep;
-    }
-  }
-}
-
-.sidebar-inner {
-  //padding: 20px 10px 0;
-  box-sizing: border-box;
-  width: $sidebar-desktop;
-  color: $text-color;
-  background: white;
-  box-shadow: $box-shadow;
-  border-radius: $border-radius;
-  if (hexo-config('motion.enable') and hexo-config('motion.transition.sidebar')) { opacity: 0; }
-
-  &.affix {
-    position: fixed;
++desktop() {
+  .sidebar {
+    // https://caniuse.com/css-sticky
+    position: sticky;
     top: $sidebar-offset;
   }
 
-  &.affix-bottom {
-    position: absolute;
+  .sidebar-toggle {
+    display: none;
   }
-}
 
-.site-overview {
-  //margin: 0 2px;
-  text-align: left;
-}
+  .sidebar-inner {
+    background: var(--content-bg-color);
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    box-sizing: border-box;
+    color: var(--text-color);
+    margin-top: $sidebar-offset;
+    max-height: 'calc(100vh - %s)' % unit($sidebar-offset * 2, 'px');
 
-.site-author {
-  clearfix();
-}
-
-.site-state-item {
-  padding: 0 10px;
-}
-
-.feed-link, .chat {
-  border-top: 1px dotted $grey-light;
-  border-bottom: 1px dotted $grey-light;
-  text-align: center;
-  a {
-    show();
-    color: $orange;
-    border: none !important;
-
-    &:hover {
-      background: none;
-      color: darken($orange, 20%);
-
-      i { color: darken($orange, 20%); }
+    if (hexo-config('motion.enable') and hexo-config('motion.transition.sidebar')) {
+      visibility: hidden;
     }
   }
-}
 
-.links-of-author {
-  //clearfix();
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  span.exturl {
-    font-size: 13px;
-  }
-}
-
-.links-of-author-item {
-  sidebar-inline-links-item();
-  a:before, span.exturl:before { display: none; }
-  a, span.exturl {
-    border-bottom: none;
-    text-decoration: underline;
+  .site-state-item {
+    padding: 0 10px;
   }
 
-  a, span.exturl {
-    show();
-    text-decoration: none;
+  .sidebar .sidebar-button {
+    border-bottom: 1px dotted $grey-light;
+    border-top: 1px dotted $grey-light;
 
-    &:hover {
+    button {
+      border: 0;
+      color: $orange;
+      display: block;
+      width: 100%;
+
+      &:hover {
+        background: none;
+        border: 0;
+        color: darken($orange, 20%);
+      }
+    }
+  }
+
+  .links-of-author {
+    flex-wrap();
+  }
+
+  .links-of-author-item {
+    margin: 5px 0 0;
+
+    if (not hexo-config('social_icons.icons_only')) {
+      width: 50%;
+    }
+
+    a {
+      border-bottom: 0;
       border-radius: 4px;
-      background: $gainsboro;
+      display: block;
+      padding: 0 5px;
+      sidebar-inline-links-item();
+
+      &:hover {
+        background: var(--body-bg-color);
+      }
     }
   }
 
-  .fa {
-    margin-right: 2px;
-    font-size: 16px;
+  .links-of-blogroll-item a {
+    padding: 0 5px;
   }
-  .fa-globe { font-size: 15px; }
-}
 
-.links-of-blogroll {
-  text-align: center;
-  padding: 3px 0 0;
-}
-.links-of-blogroll-item { padding: 0; }
-.links-of-blogroll-inline {
-  clearfix();
+  if (hexo-config('back2top.sidebar')) {
+    // Only when back2top.sidebar is true, apply the following styles
+    .back-to-top {
+      background: var(--body-bg-color);
+      margin: 8px - $sidebar-offset -10px -18px;
+      transition-property: bottom, margin-top;
 
-  .links-of-blogroll-item {
-    sidebar-inline-links-item();
-    display: inline-block;
-    if !hexo-config('social_icons.icons_only') { width: unset; }
+      &.back-to-top-on {
+        margin-top: 16px;
+      }
+    }
   }
 }
