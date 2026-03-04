@@ -22,7 +22,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 12.22.12
+          node-version: 22
 
       - run: npm ci
       - run: npx hexo clean && npx hexo generate
